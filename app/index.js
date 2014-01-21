@@ -238,6 +238,8 @@ Generator.prototype.appJs = function appJs() {
     sourceFileList: ['scripts/app.js', 'scripts/controllers/main.js'],
     searchPath: ['.tmp', 'app']
   });
+
+  this.template('../../templates/common/root/app/scripts/main.js', 'scripts/main.js');
 };
 
 Generator.prototype.createIndexHtml = function createIndexHtml() {
