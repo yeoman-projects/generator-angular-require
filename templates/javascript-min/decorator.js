@@ -1,9 +1,11 @@
-'use strict';
+define(['angular'], function (angular) {
+  'use strict';
 
-angular.module('<%= scriptAppName %>')
+  angular.module('<%= scriptAppName %>')
     .config(['$provide', function ($provide) {
-        $provide.decorator('<%= cameledName %>', function ($delegate) {
-            // decorate the $delegate
-            return $delegate;
-        });
+      $provide.decorator('<%= cameledName %>', function ($delegate) {
+        // decorate the $delegate
+        return $delegate;
+      });
     }]);
+});

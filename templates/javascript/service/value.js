@@ -1,4 +1,6 @@
-'use strict';
+define(['angular'], function (angular) {
+  'use strict';
 
-angular.module('<%= scriptAppName %>')
-  .value('<%= cameledName %>', 42);
+  angular.module('<%= scriptAppName %>')
+	.value('<%= cameledName %>', 42);
+});
