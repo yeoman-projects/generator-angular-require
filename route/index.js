@@ -14,26 +14,20 @@ var Generator = module.exports = function Generator() {
 util.inherits(Generator, ScriptBase);
 
 Generator.prototype.rewriteAppJs = function () {
-  var coffee = this.env.options.coffee;
   var config = {
     file: path.join(
       this.env.options.appPath,
-      'scripts/app.' + (coffee ? 'coffee' : 'js')
+      'scripts/app.js')
     ),
     needle: '.otherwise',
     splicable: [
-      "  templateUrl: 'views/" + this.name.toLowerCase() + ".html'" + (coffee ? "" : "," ),
+      "  templateUrl: 'views/" + this.name.toLowerCase() + ".html',",
       "  controller: '" + this.classedName + "Ctrl'"
     ]
   };
 
-  if (coffee) {
-    config.splicable.unshift(".when '/" + this.name + "',");
-  }
-  else {
-    config.splicable.unshift(".when('/" + this.name + "', {");
-    config.splicable.push("})");
-  }
+  config.splicable.unshift(".when('/" + this.name + "', {");
+  config.splicable.push("})");
 
   angularUtils.rewriteFile(config);
 };

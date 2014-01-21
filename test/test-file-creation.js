@@ -74,36 +74,6 @@ describe('Angular generator', function () {
     });
   });
 
-  it('creates coffeescript files', function (done) {
-    var expected = ['app/.htaccess',
-                    'app/404.html',
-                    'app/favicon.ico',
-                    'app/robots.txt',
-                    'app/styles/main.scss',
-                    'app/views/main.html',
-                    ['.bowerrc', /"directory": "app\/bower_components"/],
-                    'Gruntfile.js',
-                    'package.json',
-                    ['bower.json', /"name":\s+"temp"/],
-                    'app/scripts/app.coffee',
-                    'app/index.html',
-                    'app/scripts/controllers/main.coffee',
-                    'test/spec/controllers/main.coffee'
-                    ];
-    helpers.mockPrompt(angular, {
-      compass: true,
-      bootstrap: true,
-      compassBootstrap: true,
-      modules: []
-    });
-
-    angular.env.options.coffee = true;
-    angular.run([], function () {
-      helpers.assertFiles(expected);
-      done();
-    });
-  });
-
   /**
    * Generic test function that can be used to cover the scenarios where a generator is creating both a source file
    * and a test file. The function will run the respective generator, and then check for the existence of the two

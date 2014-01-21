@@ -32,21 +32,6 @@ var Generator = module.exports = function Generator(args, options) {
 
   this.appPath = this.env.options.appPath;
 
-  if (typeof this.env.options.coffee === 'undefined') {
-    this.option('coffee', {
-      desc: 'Generate CoffeeScript instead of JavaScript'
-    });
-
-    // attempt to detect if user is using CS or not
-    // if cml arg provided, use that; else look for the existence of cs
-    if (!this.options.coffee &&
-      this.expandFiles(path.join(this.appPath, '/scripts/**/*.coffee'), {}).length > 0) {
-      this.options.coffee = true;
-    }
-
-    this.env.options.coffee = this.options.coffee;
-  }
-
   if (typeof this.env.options.minsafe === 'undefined') {
     this.option('minsafe', {
       desc: 'Generate AngularJS minification safe code'
@@ -93,7 +78,6 @@ var Generator = module.exports = function Generator(args, options) {
 
     this.invoke('karma:app', {
       options: {
-        coffee: this.options.coffee,
         travis: true,
         'skip-install': this.options['skip-install'],
         components: [
