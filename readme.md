@@ -1,13 +1,13 @@
-# AngularJS generator [![Build Status](https://secure.travis-ci.org/yeoman/generator-angular.png?branch=master)](http://travis-ci.org/yeoman/generator-angular) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+# AngularJS-RequireJS generator (DO NOT USE - STILL IN DEVELOPMENT - THANKS)
 
-> Yeoman generator for AngularJS - lets you quickly set up a project with sensible defaults and best practises.
+> Yeoman generator for AngularJS using RequireJS - lets you quickly set up a project with sensible defaults and best practises.
 
 
 ## Usage
 
-Install `generator-angular`:
+Install `generator-angular-require`:
 ```
-npm install -g generator-angular
+npm install -g generator-angular-require
 ```
 
 Make a new directory, and `cd` into it:
@@ -15,9 +15,9 @@ Make a new directory, and `cd` into it:
 mkdir my-new-project && cd $_
 ```
 
-Run `yo angular`, optionally passing an app name:
+Run `yo angular-require`, optionally passing an app name:
 ```
-yo angular [app-name]
+yo angular-require [app-name]
 ```
 
 Run `grunt` for building and `grunt serve` for preview
@@ -27,27 +27,27 @@ Run `grunt` for building and `grunt serve` for preview
 
 Available generators:
 
-* [angular](#app) (aka [angular:app](#app))
-* [angular:controller](#controller)
-* [angular:directive](#directive)
-* [angular:filter](#filter)
-* [angular:route](#route)
-* [angular:service](#service)
-* [angular:provider](#service)
-* [angular:factory](#service)
-* [angular:value](#service)
-* [angular:constant](#service)
-* [angular:decorator] (#decorator)
-* [angular:view](#view)
+* [angular-require](#app) (aka [angular-require:app](#app))
+* [angular-require:controller](#controller)
+* [angular-require:directive](#directive)
+* [angular-require:filter](#filter)
+* [angular-require:route](#route)
+* [angular-require:service](#service)
+* [angular-require:provider](#service)
+* [angular-require:factory](#service)
+* [angular-require:value](#service)
+* [angular-require:constant](#service)
+* [angular-require:decorator] (#decorator)
+* [angular-require:view](#view)
 
 **Note: Generators are to be run from the root directory of your app.**
 
 ### App
-Sets up a new AngularJS app, generating all the boilerplate you need to get started. The app generator also optionally installs Twitter Bootstrap and additional AngularJS modules, such as angular-resource (installed by default).
+Sets up a new AngularJS-RequireJS app, generating all the boilerplate you need to get started. The app generator also optionally installs Twitter Bootstrap and additional AngularJS modules, such as angular-resource (installed by default).
 
 Example:
 ```bash
-yo angular
+yo angular-require
 ```
 
 ### Route
@@ -55,7 +55,7 @@ Generates a controller and view, and configures a route in `app/scripts/app.js` 
 
 Example:
 ```bash
-yo angular:route myroute
+yo angular-require:route myroute
 ```
 
 Produces `app/scripts/controllers/myroute.js`:
@@ -75,7 +75,7 @@ Generates a controller in `app/scripts/controllers`.
 
 Example:
 ```bash
-yo angular:controller user
+yo angular-require:controller user
 ```
 
 Produces `app/scripts/controllers/user.js`:
@@ -89,7 +89,7 @@ Generates a directive in `app/scripts/directives`.
 
 Example:
 ```bash
-yo angular:directive myDirective
+yo angular-require:directive myDirective
 ```
 
 Produces `app/scripts/directives/myDirective.js`:
@@ -110,7 +110,7 @@ Generates a filter in `app/scripts/filters`.
 
 Example:
 ```bash
-yo angular:filter myFilter
+yo angular-require:filter myFilter
 ```
 
 Produces `app/scripts/filters/myFilter.js`:
@@ -127,7 +127,7 @@ Generates an HTML view file in `app/views`.
 
 Example:
 ```bash
-yo angular:view user
+yo angular-require:view user
 ```
 
 Produces `app/views/user.html`:
@@ -140,7 +140,7 @@ Generates an AngularJS service.
 
 Example:
 ```bash
-yo angular:service myService
+yo angular-require:service myService
 ```
 
 Produces `app/scripts/services/myService.js`:
@@ -157,7 +157,7 @@ Generates an AngularJS service decorator.
 
 Example:
 ```bash
-yo angular:decorator serviceName
+yo angular-require:decorator serviceName
 ```
 
 Produces `app/scripts/decorators/serviceNameDecorator.js`:
@@ -178,7 +178,7 @@ For generators that output scripts, the `--coffee` option will output CoffeeScri
 
 For example:
 ```bash
-yo angular:controller user --coffee
+yo angular-require:controller user --coffee
 ```
 
 Produces `app/scripts/controller/user.coffee`:
@@ -202,7 +202,7 @@ By default, generators produce unannotated code. Without annotations, AngularJS'
 
 #### Example
 ```bash
-yo angular:controller user --minsafe
+yo angular-require:controller user --minsafe
 ```
 
 Produces `app/controller/user.js`:
@@ -259,7 +259,7 @@ By default, new scripts are added to the index.html file. However, this may not 
 
 To skip adding them to the index, pass in the skip-add argument:
 ```bash
-yo angular:service serviceName --skip-add
+yo angular-require:service serviceName --skip-add
 ```
 
 ## Bower Components
