@@ -40,15 +40,15 @@ var Generator = module.exports = function Generator(args, options) {
     args.push('--minsafe');
   }
 
-  this.hookFor('angular:common', {
+  this.hookFor('angular-require:common', {
     args: args
   });
 
-  this.hookFor('angular:main', {
+  this.hookFor('angular-require:main', {
     args: args
   });
 
-  this.hookFor('angular:controller', {
+  this.hookFor('angular-require:controller', {
     args: args
   });
 
@@ -239,6 +239,7 @@ Generator.prototype.appJs = function appJs() {
     searchPath: ['.tmp', 'app']
   });
 
+  // RequireJS config tokenisation
   this.template('../../templates/common/root/app/scripts/main.js', 'scripts/main.js');
 };
 
