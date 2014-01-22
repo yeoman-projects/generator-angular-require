@@ -30,10 +30,10 @@ window.name = "NG_DEFER_BOOTSTRAP!";
 require( [
         'angular',
         'app'<% if (routeModule) { %>,
-        'routes'<% } %><% if (cookiesModule) { %>,
-        'cookies'<% } %><% if (sanitizeModule) { %>,
-        'sanitize'<% } %><% if (resourceModule) { %>,
-        'resource'<% } %>
+        'angularRoute'<% } %><% if (cookiesModule) { %>,
+        'angularCookies'<% } %><% if (sanitizeModule) { %>,
+        'angularSanitize'<% } %><% if (resourceModule) { %>,
+        'angularResource'<% } %>
 ], function(angular, app<% if (routeModule) { %>, routes<% } %><% if (cookiesModule) { %>, cookies<% } %><% if (sanitizeModule) { %>, sanitize<% } %><% if (resourceModule) { %>, resource<% } %>) {
         'use strict';
         var $html = angular.element(document.getElementsByTagName('html')[0]);

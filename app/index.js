@@ -230,6 +230,7 @@ Generator.prototype.bootstrapFiles = function bootstrapFiles() {
   this.copy('styles/' + mainFile, 'app/styles/' + mainFile);
 };
 
+/*
 Generator.prototype.appJs = function appJs() {
   this.indexFile = this.appendFiles({
     html: this.indexFile,
@@ -238,10 +239,8 @@ Generator.prototype.appJs = function appJs() {
     sourceFileList: ['scripts/app.js', 'scripts/controllers/main.js'],
     searchPath: ['.tmp', 'app']
   });
-
-  // RequireJS config tokenisation
-  this.template('../../templates/common/root/app/scripts/main.js', 'scripts/main.js');
 };
+*/
 
 Generator.prototype.createIndexHtml = function createIndexHtml() {
   this.indexFile = this.indexFile.replace(/&apos;/g, "'");
@@ -252,6 +251,8 @@ Generator.prototype.packageFiles = function () {
   this.template('../../templates/common/_bower.json', 'bower.json');
   this.template('../../templates/common/_package.json', 'package.json');
   this.template('../../templates/common/Gruntfile.js', 'Gruntfile.js');
+
+  this.template('../../templates/common/scripts/bootstrap.js', 'app/scripts/bootstrap.js');
 };
 
 Generator.prototype.imageFiles = function () {

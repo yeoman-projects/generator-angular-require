@@ -1,7 +1,7 @@
 define(['angular'], function (angular) {
   'use strict';
 
-  angular.module('<%= scriptAppName %>', [<%= angularModules %>])<% if (ngRoute) { %>
+  return angular.module('<%= scriptAppName %>', [<%= angularModules %>])<% if (ngRoute) { %>
     .config(['$routeProvider', function ($routeProvider) {
       $routeProvider
         .when('/', {
