@@ -1,7 +1,7 @@
 define(['angular'], function (angular) {
   'use strict';
 
-  angular.module('<%= scriptAppName %>')
+  angular.module('<%= scriptAppName %>.directives')
   	.directive('<%= cameledName %>', function () {
       return {
       	template: '<div></div>',

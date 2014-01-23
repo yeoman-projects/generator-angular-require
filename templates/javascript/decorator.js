@@ -1,7 +1,7 @@
 define(['angular'], function (angular) {
   'use strict';
 
-  angular.module('<%= scriptAppName %>')
+  angular.module('<%= scriptAppName %>.decorators')
     .config(function ($provide) {
       $provide.decorator('<%= cameledName %>', function ($delegate) {
           // decorate the $delegate

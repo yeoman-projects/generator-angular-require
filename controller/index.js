@@ -20,6 +20,6 @@ Generator.prototype.createControllerFiles = function createControllerFiles() {
     'controller',
     'spec/controller',
     'controllers',
-    this.options['skip-add'] || false
+    this.options['skip-add'] || true
   );
 };
