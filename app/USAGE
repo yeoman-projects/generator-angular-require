@@ -2,7 +2,7 @@ Description:
     Creates a default AngularJS app
 
 Example:
-    yo angular [--minsafe]
+    yo angular
 
     This will create:
         Gruntfile.js

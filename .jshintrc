@@ -12,5 +12,14 @@
 	"undef": true,
 	"strict": false,
 	"trailing": true,
-	"smarttabs": true
+	"smarttabs": true,
+	"globals": {
+		/* AMD */
+		"define" : false,
+	    /* Custom */
+	    "ngRoutes": false,
+	    "ngSanitize": false,
+	    "ngCookies": false,
+	    "ngResource": false
+	}
 }

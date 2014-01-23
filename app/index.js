@@ -32,14 +32,6 @@ var Generator = module.exports = function Generator(args, options) {
 
   this.appPath = this.env.options.appPath;
 
-  if (typeof this.env.options.minsafe === 'undefined') {
-    this.option('minsafe', {
-      desc: 'Generate AngularJS minification safe code'
-    });
-    this.env.options.minsafe = this.options.minsafe;
-    args.push('--minsafe');
-  }
-
   this.hookFor('angular-require:common', {
     args: args
   });
@@ -101,15 +93,6 @@ Generator.prototype.welcome = function welcome() {
     console.log(
       'Out of the box I include Bootstrap and some AngularJS recommended modules.\n'
     );
-
-    // Deprecation notice for minsafe
-    if (this.options.minsafe) {
-      console.warn(
-        '\n** The --minsafe flag is being deprecated in 0.7.0 and removed in ' +
-        '0.8.0. For more information, see ' +
-        'https://github.com/yeoman/generator-angular#minification-safe. **\n'
-      );
-    }
   }
 };
 
