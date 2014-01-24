@@ -8,7 +8,7 @@ var generators = require('yeoman-generator');
 var helpers = require('yeoman-generator').test;
 
 
-describe('Angular generator template mechanism', function () {
+describe('Angular-RequireJS generator template mechanism', function () {
     //TODO: Add underscore dependency and test with _.camelize(folderName);
     var folderName = 'UpperCaseBug';
     var angular;
