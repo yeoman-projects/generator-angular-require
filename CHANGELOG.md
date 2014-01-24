@@ -1,3 +1,6 @@
+
+### Change log from fork of generator-angular - preserved as a reminder of the hard work that has made generator-angular-require development a joy to do. Much <3 to the Yeoman community. and the good folks developing generator-angular.
+
 <a name="v0.7.1"></a>
 ### v0.7.1 (2013-12-22)
 
