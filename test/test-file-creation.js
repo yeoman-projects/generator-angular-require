@@ -8,7 +8,7 @@ var generators = require('yeoman-generator');
 var helpers = require('yeoman-generator').test;
 var _ = require('underscore.string');
 
-describe('Angular generator', function () {
+describe('Angular-RequireJS generator', function () {
   var angular;
 
   beforeEach(function (done) {
