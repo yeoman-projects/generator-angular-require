@@ -1,4 +1,4 @@
-# AngularJS-RequireJS generator (DO NOT USE - STILL IN DEVELOPMENT - THANKS)
+# AngularJS-RequireJS generator
 
 > Yeoman generator for AngularJS using RequireJS - lets you quickly set up a project with sensible defaults and best practises.
 
