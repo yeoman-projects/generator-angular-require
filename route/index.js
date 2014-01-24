@@ -17,8 +17,7 @@ Generator.prototype.rewriteAppJs = function () {
   var config = {
     file: path.join(
       this.env.options.appPath,
-      'scripts/app.js')
-    ),
+      'scripts/app.js'),
     needle: '.otherwise',
     splicable: [
       "  templateUrl: 'views/" + this.name.toLowerCase() + ".html',",
