@@ -14,6 +14,6 @@ Generator.prototype.createServiceFiles = function createServiceFiles() {
     'service/service',
     'spec/service',
     'services',
-    this.options['skip-add'] || false
+    true	// Skip adding the script to the index.html file of the application
   );
 };

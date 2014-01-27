@@ -14,6 +14,6 @@ Generator.prototype.createDirectiveFiles = function createDirectiveFiles() {
     'directive',
     'spec/directive',
     'directives',
-    this.options['skip-add'] || false
+    true	// Skip adding the script to the index.html file of the application
   );
 };

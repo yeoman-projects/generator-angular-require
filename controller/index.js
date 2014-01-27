@@ -20,6 +20,6 @@ Generator.prototype.createControllerFiles = function createControllerFiles() {
     'controller',
     'spec/controller',
     'controllers',
-    this.options['skip-add'] || true
+    true  // Skip adding the script to the index.html file of the application
   );
 };
