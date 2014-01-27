@@ -1,4 +1,4 @@
-# AngularJS-RequireJS generator
+# AngularJS-RequireJS generator [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
 > Yeoman generator for AngularJS using RequireJS - lets you quickly set up a project with sensible defaults and best practises. Much <3 to the Yeoman community for creating such a great tool!
 
@@ -37,7 +37,7 @@ Available generators:
 * [angular-require:factory](#service)
 * [angular-require:value](#service)
 * [angular-require:constant](#service)
-* [angular-require:decorator] (#decorator)
+* [angular-require:decorator](#decorator)
 * [angular-require:view](#view)
 
 **Note: Generators are to be run from the root directory of your app.**
