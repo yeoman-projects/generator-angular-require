@@ -27,7 +27,7 @@ describe('Angular-RequireJS generator template mechanism', function () {
             if (err) {
                 done(err);
             }
-            angular = helpers.createGenerator('angular:app', deps);
+            angular = helpers.createGenerator('angular-require:app', deps);
             angular.options['skip-install'] = true;
             done();
         });
