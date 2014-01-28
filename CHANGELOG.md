@@ -1,3 +1,12 @@
+<a name="v0.1.3"></a>
+## v0.1.3 (2014-01-28)
+
+#### Bug Fixes
+
+* **test:**
+  * Add Travis-CI badge to readme ([fb023911a6](https://github.com/aaronallport/generator-angular-require/commit/fb023911a656490e282c2de9b613d792a4472754))
+  * Fix generator CI tests ([f1ba667c59](https://github.com/aaronallport/generator-angular-require/commit/f1ba667c59a284ab0ce3494df0e1795d79adfdef))
+
 <a name="v0.1.2"></a>
 ## v0.1.2 (2014-01-27)
 
