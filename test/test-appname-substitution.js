@@ -58,10 +58,11 @@ describe('Angular-RequireJS generator template mechanism', function () {
             var main_test_js = fs.readFileSync('test/spec/controllers/main.js', 'utf8');
 
             // Test JS Files
-            var regex_js = new RegExp('module\\(\'' + expectedAppName + '\'');
+            var regex_js_app = new RegExp('module\\(\'' + expectedAppName + '\'');
             assert.ok(regex_js.test(app_js), 'app.js template using a wrong appName');
-            assert.ok(regex_js.test(main_js), 'main.js template using a wrong appName');
-            assert.ok(regex_js.test(main_test_js), 'controller spec template using a wrong appName');
+            var regex_js_controller = new RegExp('module\\(\'' + expectedAppName + '.controllers\'');
+            assert.ok(regex_js_controller.test(main_js), 'main.js template using a wrong appName');
+            assert.ok(regex_js_controller.test(main_test_js), 'controller spec template using a wrong appName');
 
             // read HTML file
             var index_html = fs.readFileSync('app/index.html', 'utf8');
