@@ -1,3 +1,12 @@
+<a name="v0.1.8"></a>
+### v0.1.8 (2014-02-04)
+
+
+#### Enhancements
+
+* **generator:**
+  * Upgrade version of AngularJS ([b8395ced3d](https://github.com/aaronallport/generator-angular-require/commit/b8395ced3d9d3246eefcdc95a9ad9002567a4ce3))
+
 <a name="v0.1.7"></a>
 ## v0.1.7 (2014-02-04)
 
