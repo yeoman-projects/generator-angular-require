@@ -18,7 +18,7 @@ describe('Angular-RequireJS generator', function () {
       '../../controller',
       '../../main', [
         helpers.createDummyGenerator(),
-        'karma:app'
+        'karma-require:app'
       ]
     ];
     helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
