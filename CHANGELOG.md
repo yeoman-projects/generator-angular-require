@@ -1,3 +1,12 @@
+<a name="v0.1.7"></a>
+## v0.1.7 (2014-02-04)
+
+#### Bug Fixes
+
+* **test:**
+  * Update generator tests ([2670ec41ee](https://github.com/aaronallport/generator-angular-require/commit/2670ec41eee6e1735771d2c5367ebae86b31e055))
+
+
 <a name="v0.1.6"></a>
 ## v0.1.6 (2014-02-04)
 
