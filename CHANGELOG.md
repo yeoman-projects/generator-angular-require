@@ -4,6 +4,7 @@
 #### Bug Fixes
 
 * **test:**
+  * Update test filenames ([d93d450b86](https://github.com/aaronallport/generator-angular-require/commit/d93d450b86f3403aeaef65495425bba19ff7d898))
   * Update generator tests ([2670ec41ee](https://github.com/aaronallport/generator-angular-require/commit/2670ec41eee6e1735771d2c5367ebae86b31e055))
 
 
