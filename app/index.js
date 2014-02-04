@@ -68,7 +68,7 @@ var Generator = module.exports = function Generator(args, options) {
       enabledComponents.push('angular-route/angular-route.js');
     }
 
-    this.invoke('karma:app', {
+    this.invoke('karma-require:app', {
       options: {
         travis: true,
         'skip-install': this.options['skip-install'],
@@ -235,7 +235,10 @@ Generator.prototype.packageFiles = function () {
   this.template('../../templates/common/_package.json', 'package.json');
   this.template('../../templates/common/Gruntfile.js', 'Gruntfile.js');
 
+  // RequireJS App config
   this.template('../../templates/common/scripts/bootstrap.js', 'app/scripts/bootstrap.js');
+  // RequireJS Test config
+  this.template('../../templates/common/scripts/test-bootstrap.js', 'test/test-bootstrap.js');
 };
 
 Generator.prototype.imageFiles = function () {
