@@ -1,7 +1,7 @@
 define(['angular'], function (angular) {
   'use strict';
 
-  angular.module('<%= scriptAppName %>.providers')
+  angular.module('<%= scriptAppName %>.providers', [])
     .provider('<%= cameledName %>', function () {
 
       // Private variables
