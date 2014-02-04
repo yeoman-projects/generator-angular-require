@@ -50,7 +50,7 @@ Generator.prototype.appTemplate = function (src, dest) {
 Generator.prototype.testTemplate = function (src, dest) {
   yeoman.generators.Base.prototype.template.apply(this, [
     src + this.scriptSuffix,
-    path.join(this.env.options.testPath, dest.toLowerCase()) + this.scriptSuffix
+    path.join(this.env.options.testPath, dest.toLowerCase()) + 'Spec' + this.scriptSuffix
   ]);
 };
 
