@@ -59,7 +59,7 @@ describe('Angular-RequireJS generator', function () {
                     'app/scripts/app.js',
                     'app/index.html',
                     'app/scripts/controllers/main.js',
-                    'test/spec/controllers/main.js'
+                    'test/spec/controllers/mainSpec.js'
                     ];
     helpers.mockPrompt(angular, {
       compass: true,
@@ -114,7 +114,7 @@ describe('Angular-RequireJS generator', function () {
       angularGenerator.run([], function () {
         helpers.assertFiles([
           [path.join('app/scripts', targetDirectory, name + '.js'), new RegExp(generatorType + '\\(\'' + scriptNameFn(name) + suffix + '\'', 'g')],
-          [path.join('test/spec', targetDirectory, name + '.js'), new RegExp('describe\\(\'' + _.classify(specType) + ': ' + specNameFn(name) + suffix + '\'', 'g')]
+          [path.join('test/spec', targetDirectory, name + 'Spec.js'), new RegExp('describe\\(\'' + _.classify(specType) + ': ' + specNameFn(name) + suffix + '\'', 'g')]
         ]);
         done();
       });

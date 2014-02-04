@@ -39,7 +39,7 @@ describe('Angular-RequireJS generator template mechanism', function () {
             'app/scripts/app.js',
             'app/scripts/controllers/main.js',
             'app/index.html',
-            'test/spec/controllers/main.js'
+            'test/spec/controllers/mainSpec.js'
         ];
         helpers.mockPrompt(angular, {
           compass: true,
@@ -55,7 +55,7 @@ describe('Angular-RequireJS generator template mechanism', function () {
             // read JS Files
             var app_js = fs.readFileSync('app/scripts/app.js', 'utf8');
             var main_js = fs.readFileSync('app/scripts/controllers/main.js', 'utf8');
-            var main_test_js = fs.readFileSync('test/spec/controllers/main.js', 'utf8');
+            var main_test_js = fs.readFileSync('test/spec/controllers/mainSpec.js', 'utf8');
 
             // Test JS Files
             var regex_js_app = new RegExp('module\\(\'' + expectedAppName + '\'');
