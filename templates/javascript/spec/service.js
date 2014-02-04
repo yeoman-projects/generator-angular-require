@@ -1,18 +1,20 @@
-'use strict';
+define(['angular', 'angularMocks', 'app'], function(angular, mocks, app) {
+  'use strict';
 
-describe('Service: <%= cameledName %>', function () {
+  describe('Service: <%= cameledName %>', function () {
 
-  // load the service's module
-  beforeEach(module('<%= scriptAppName %>'));
+    // load the service's module
+    beforeEach(module('<%= scriptAppName %>.services'));
 
-  // instantiate service
-  var <%= cameledName %>;
-  beforeEach(inject(function (_<%= cameledName %>_) {
-    <%= cameledName %> = _<%= cameledName %>_;
-  }));
+    // instantiate service
+    var <%= cameledName %>;
+    beforeEach(inject(function (_<%= cameledName %>_) {
+      <%= cameledName %> = _<%= cameledName %>_;
+    }));
 
-  it('should do something', function () {
-    expect(!!<%= cameledName %>).toBe(true);
+    it('should do something', function () {
+      expect(!!<%= cameledName %>).toBe(true);
+    });
+
   });
-
 });
