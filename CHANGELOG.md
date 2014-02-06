@@ -1,3 +1,21 @@
+<a name="v0.1.9"></a>
+### v0.1.9 (2014-02-06)
+
+#### Enhancements
+
+* **generator:** Automatic dependency injection ([14ea732b71](https://github.com/aaronallport/generator-angular-require/commit/14ea732b71f816ce66f714c0875d854a2f1c590d))
+
+#### Features
+
+* **generator:** removing console message on sub-generator run ([b36f007715](https://github.com/aaronallport/generator-angular-require/commit/b36f0077158f49678cbe5e1fd13c6bada46041ea))
+* **generator:** Update devDependencies ([599792a5fc](https://github.com/aaronallport/generator-angular-require/commit/599792a5fcddd3f4aef31765088a99502013b7b1))
+* **generator:** Delete npm-debug.log ([88a3a6f471](https://github.com/aaronallport/generator-angular-require/commit/88a3a6f471fd89f72eb423fa5258b77c9ca6a41c))
+
+#### Bug Fixes
+
+* **generator:** require compass only when enabled ([2d492880](https://github.com/aaronallport/generator-angular-require/commit/2d4928809d923debf9619ad19fe7578077c22766))
+* **test:** update controller module name ([da66a1ed](https://github.com/aaronallport/generator-angular-require/commit/da66a1edf34712de0f72bde1bd8568bf60b6721e))
+
 <a name="v0.1.8"></a>
 ### v0.1.8 (2014-02-04)
 
