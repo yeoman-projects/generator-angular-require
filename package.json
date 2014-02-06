@@ -34,9 +34,9 @@
   "devDependencies": {
     "mocha": "*",
     "grunt": "~0.4.1",
-    "grunt-contrib-jshint": "~0.7.2",
+    "grunt-contrib-jshint": "~0.8.0",
     "grunt-conventional-changelog": "~1.0.0",
-    "load-grunt-tasks": "~0.2.0",
+    "load-grunt-tasks": "~0.3.0",
     "marked": "~0.2.8",
     "semver": "~2.2.1",
     "underscore.string": "~2.3.1",
