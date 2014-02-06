@@ -88,9 +88,4 @@ Generator.prototype.generateSourceAndTest = function (appTemplate, testTemplate,
   if (!skipAdd) {
     this.addScriptToIndex(path.join(targetDirectory, this.name));
   }
-
-  console.log(
-      'You may need to add generated modules to your application dependencies ' +
-      '(both as a RequireJS module dependency and an AngualrJS module dependency.\n'
-    );
 };
