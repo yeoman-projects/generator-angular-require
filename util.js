@@ -6,17 +6,57 @@ var fs = require('fs');
 module.exports = {
   rewrite: rewrite,
   rewriteFile: rewriteFile,
-  appName: appName
+  appName: appName,
+  injectIntoFile: injectIntoFile
 };
 
 function rewriteFile (args) {
   args.path = args.path || process.cwd();
   var fullPath = path.join(args.path, args.file);
 
+  args.spliceWithinLine = args.spliceWithinLine || false;
+
   args.haystack = fs.readFileSync(fullPath, 'utf8');
   var body = rewrite(args);
 
   fs.writeFileSync(fullPath, body);
+}
+
+function injectIntoFile (appPath, moduleName, attachedComponentName, injectedModuleName) {
+  // Set up config object
+  var config = {
+    file: path.join(
+      appPath,
+      'scripts/app.js'),
+    needle: "",
+    splicable: [],
+    spliceWithinLine: true
+  };
+
+  // Insert AMD module dependency
+  config.needle = "]/*deps*/";
+  config.splicable = [ ", '" + moduleName + "'" ];
+
+  rewriteFile(config);
+
+  // Ensure our module is invoked
+  config.needle = ")/*invoke*/";
+  config.splicable = [ ", " + attachedComponentName ];
+
+  rewriteFile(config);
+
+  // Check for the existence of a controllers module as an 
+  // application dependency. If it doesn't exist, inject it
+  var app_js = fs.readFileSync('app/scripts/app.js', 'utf8');
+  var regex_app_module = new RegExp(injectedModuleName);
+
+  if (!regex_app_module.test(app_js)) {
+    // Inject the controllers module as an AngularJS module dependency
+    config.needle = "/*angJSDeps*/";
+    config.splicable = [ "'" + injectedModuleName + "',\n" ];
+
+    rewriteFile(config);
+  }
 }
 
 function escapeRegExp (str) {
@@ -41,6 +81,15 @@ function rewrite (args) {
       otherwiseLineIndex = i;
     }
   });
+
+  if ((otherwiseLineIndex > 0) && (args.spliceWithinLine)) {
+    var line = lines[otherwiseLineIndex];
+    var indexToSpliceAt = line.indexOf(args.needle);
+
+    lines[otherwiseLineIndex] = line.substr(0, indexToSpliceAt) + args.splicable[0] + line.substr(indexToSpliceAt);
+
+    return lines.join('\n');
+  }
 
   var spaces = 0;
   while (lines[otherwiseLineIndex].charAt(spaces) === ' ') {

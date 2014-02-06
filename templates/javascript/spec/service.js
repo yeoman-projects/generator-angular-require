@@ -4,7 +4,7 @@ define(['angular', 'angularMocks', 'app'], function(angular, mocks, app) {
   describe('Service: <%= cameledName %>', function () {
 
     // load the service's module
-    beforeEach(module('<%= scriptAppName %>.services'));
+    beforeEach(module('<%= scriptAppName %>.services.<%= classedName %>'));
 
     // instantiate service
     var <%= cameledName %>;

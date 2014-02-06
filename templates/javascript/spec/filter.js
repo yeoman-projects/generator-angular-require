@@ -4,7 +4,7 @@ define(['angular', 'angularMocks', 'app'], function(angular, mocks, app) {
   describe('Filter: <%= cameledName %>', function () {
 
     // load the filter's module
-    beforeEach(module('<%= scriptAppName %>.filters'));
+    beforeEach(module('<%= scriptAppName %>.filters.<%= classedName %>'));
 
     // initialize a new instance of the filter before each test
     var <%= cameledName %>;

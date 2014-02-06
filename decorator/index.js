@@ -1,7 +1,10 @@
 'use strict';
+var path = require('path');
 var util = require('util');
 var ScriptBase = require('../script-base.js');
+var angularUtils = require('../util.js');
 var fs = require('fs');
+
 
 var Generator = module.exports = function Generator(args, options) {
   ScriptBase.apply(this, arguments);
@@ -65,3 +68,13 @@ Generator.prototype.createDecoratorFiles = function createDecoratorFiles() {
 function buildRelativePath(fileName){
   return 'decorators/' + fileName + "Decorator";
 }
+
+// Re-write the main app module to account for our new dependency
+Generator.prototype.injectDependenciesToApp = function () {
+  angularUtils.injectIntoFile(
+    this.env.options.appPath, 
+    'decorators/' + this.name.toLowerCase() + "decorator", 
+    this.classedName + 'Decorator', 
+    this.scriptAppName + '.decorators.' + this.classedName
+  );
+};

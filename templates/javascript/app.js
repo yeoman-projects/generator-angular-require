@@ -1,8 +1,8 @@
 /* global controllers:false */
-define(['angular', 'controllers/main'], function (angular, controllers) {
+define(['angular']/*deps*/, function (angular)/*invoke*/ {
   'use strict';
 
-  return angular.module('<%= scriptAppName %>', ['<%= scriptAppName %>.controllers',<%= angularModules %>])<% if (ngRoute) { %>
+  return angular.module('<%= scriptAppName %>', [/*angJSDeps*/ <%= angularModules %>])<% if (ngRoute) { %>
     .config(function ($routeProvider) {
       $routeProvider
         .when('/', {
