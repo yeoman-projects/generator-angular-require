@@ -1,3 +1,4 @@
+/*jshint unused: vars */
 define(['angular', 'angularMocks', 'app'], function(angular, mocks, app) {
   'use strict';
 

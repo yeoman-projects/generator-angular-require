@@ -1,3 +1,4 @@
+/*jshint unused: vars */
 require.config({
   paths: {
     angular: '../../bower_components/angular/angular'<% if (routeModule) { %>,
@@ -36,9 +37,10 @@ require([
   'angularResource'<% } %>
 ], function(angular, app<% if (routeModule) { %>, ngRoutes<% } %><% if (cookiesModule) { %>, ngCookies<% } %><% if (sanitizeModule) { %>, ngSanitize<% } %><% if (resourceModule) { %>, ngResource<% } %>) {
   'use strict';
+  /* jshint ignore:start */
   var $html = angular.element(document.getElementsByTagName('html')[0]);
-
+  /* jshint ignore:end */
   angular.element().ready(function() {
-    angular.resumeBootstrap([app['name']]);
+    angular.resumeBootstrap([app.name]);
   });
 });
