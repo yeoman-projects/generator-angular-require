@@ -99,6 +99,7 @@ module.exports = function (grunt) {
     jshint: {
       options: {
         jshintrc: '.jshintrc',
+        ignores: '<%%= yeoman.app %>/scripts/bootstrap-built.js',
         reporter: require('jshint-stylish')
       },
       all: [
@@ -354,6 +355,40 @@ module.exports = function (grunt) {
         configFile: 'karma.conf.js',
         singleRun: true
       }
+    },
+    requirejs: {
+      compile: {
+        options: {
+          baseUrl: '<%%= yeoman.app %>/scripts',
+          paths: {
+            angular: '../bower_components/angular/angular'<% if (routeModule) { %>,
+            angularRoute: '../bower_components/angular-route/angular-route'<% } %><% if (cookiesModule) { %>,
+            angularCookies: '../bower_components/angular-cookies/angular-cookies'<% } %><% if (sanitizeModule) { %>,
+            angularSanitize: '../bower_components/angular-sanitize/angular-sanitize'<% } %><% if (resourceModule) { %>,
+            angularResource: '../bower_components/angular-resource/angular-resource'<% } %>,
+            angularMocks: '../bower_components/angular-mocks/angular-mocks',
+            text: '../bower_components/requirejs-text/text'
+          },
+          shim: {
+            'angular' : {'exports' : 'angular'}<% if (routeModule) { %>,
+            'angularRoute': ['angular']<% } %><% if (cookiesModule) { %>,
+            'angularCookies': ['angular']<% } %><% if (sanitizeModule) { %>,
+            'angularSanitize': ['angular']<% } %><% if (resourceModule) { %>,
+            'angularResource': ['angular']<% } %>,
+            'angularMocks': {
+              deps:['angular'],
+              'exports':'angular.mock'
+            }
+          },
+          optimize: 'uglify2',
+          uglify2: {
+            mangle: false
+          },
+          include: ['angular'],
+          name: 'bootstrap',
+          out: '<%%= yeoman.app %>/scripts/bootstrap-built.js'
+        }
+      }
     }
   });
 
@@ -397,7 +432,9 @@ module.exports = function (grunt) {
     'copy:dist',
     'cdnify',
     'cssmin',
-    'uglify',
+    // Below task commented out as r.js (via grunt-contrib-requirejs) will take care of this
+    // 'uglify',
+    'requirejs',
     'rev',
     'usemin',
     'htmlmin'
