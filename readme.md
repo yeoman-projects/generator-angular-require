@@ -267,3 +267,6 @@ When submitting a new feature, add tests that cover the feature.
 ## License
 
 [BSD license](http://opensource.org/licenses/bsd-license.php)
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/aaronallport/generator-angular-require/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
