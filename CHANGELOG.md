@@ -1,3 +1,15 @@
+<a name="v0.1.10"></a>
+### v0.1.10 (2014-02-12)
+
+#### Features
+
+* **app:**
+  * moved requires compile step down in build order ([676e2bef](https://github.com/aaronallport/generator-angular-require/commit/676e2bef71ef86040ed18058ca3b6fae7f20c7b6))
+  * r.js GruntFile configuration ([657f460b](https://github.com/aaronallport/generator-angular-require/commit/657f460bb20815da603441a99b519ab0c9f56e76))
+* **deps:** 
+  * r.js compiler support ([ee7910d4](https://github.com/aaronallport/generator-angular-require/commit/ee7910d44b8e56d994ae266c5425c9109e4c1947))
+  * chore(deps): remove grunt uglify ([c8d3b63da5](https://github.com/aaronallport/generator-angular-require/commit/c8d3b63da50601b39ad4f52e953d15022e54277b))
+
 <a name="v0.1.9"></a>
 ### v0.1.9 (2014-02-06)
 
