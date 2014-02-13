@@ -270,7 +270,3 @@ When submitting a new feature, add tests that cover the feature.
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/aaronallport/generator-angular-require/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/aaronallport/generator-angular-require/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
