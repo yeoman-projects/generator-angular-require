@@ -356,30 +356,29 @@ module.exports = function (grunt) {
         singleRun: true
       }
     },
+
+    // Settings for grunt-bower-requirejs
+    bower: {
+      app: {
+        rjsConfig: '<%%= yeoman.app %>scripts/bootstrap.js',
+        options: {
+          exclude: ['requirejs']
+        }
+      },
+      test: {
+        rjsConfig: '<%%= yeoman.app %>/../test/test-bootstrap.js',
+        options: {
+          exclude: ['requirejs']
+        }
+      }
+    },
+
+    // r.js compile config
     requirejs: {
       compile: {
         options: {
           baseUrl: '<%%= yeoman.app %>/scripts',
-          paths: {
-            angular: '../bower_components/angular/angular'<% if (routeModule) { %>,
-            angularRoute: '../bower_components/angular-route/angular-route'<% } %><% if (cookiesModule) { %>,
-            angularCookies: '../bower_components/angular-cookies/angular-cookies'<% } %><% if (sanitizeModule) { %>,
-            angularSanitize: '../bower_components/angular-sanitize/angular-sanitize'<% } %><% if (resourceModule) { %>,
-            angularResource: '../bower_components/angular-resource/angular-resource'<% } %>,
-            angularMocks: '../bower_components/angular-mocks/angular-mocks',
-            text: '../bower_components/requirejs-text/text'
-          },
-          shim: {
-            'angular' : {'exports' : 'angular'}<% if (routeModule) { %>,
-            'angularRoute': ['angular']<% } %><% if (cookiesModule) { %>,
-            'angularCookies': ['angular']<% } %><% if (sanitizeModule) { %>,
-            'angularSanitize': ['angular']<% } %><% if (resourceModule) { %>,
-            'angularResource': ['angular']<% } %>,
-            'angularMocks': {
-              deps:['angular'],
-              'exports':'angular.mock'
-            }
-          },
+          mainConfigFile: '<%%= yeoman.app %>/scripts/bootstrap.js',
           optimize: 'uglify2',
           uglify2: {
             mangle: false
@@ -424,6 +423,8 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'clean:dist',
     'bower-install',
+    'bower:app',
+    //'bower:test', // Is this really the best place to put this?
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
