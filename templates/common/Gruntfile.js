@@ -360,15 +360,15 @@ module.exports = function (grunt) {
     // Settings for grunt-bower-requirejs
     bower: {
       app: {
-        rjsConfig: '<%%= yeoman.app %>scripts/bootstrap.js',
+        rjsConfig: '<%%= yeoman.app %>/scripts/bootstrap.js',
         options: {
-          exclude: ['requirejs']
+          exclude: ['requirejs', 'json3', 'es5-shim']
         }
       },
       test: {
         rjsConfig: '<%%= yeoman.app %>/../test/test-bootstrap.js',
         options: {
-          exclude: ['requirejs']
+          exclude: ['requirejs', 'json3', 'es5-shim']
         }
       }
     },
