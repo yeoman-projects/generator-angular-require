@@ -424,7 +424,7 @@ module.exports = function (grunt) {
     'clean:dist',
     'bower-install',
     'bower:app',
-    //'bower:test', // Is this really the best place to put this?
+    'bower:test', // Is this really the best place to put this?
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
