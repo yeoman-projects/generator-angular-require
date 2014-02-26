@@ -246,6 +246,24 @@ Generator.prototype.imageFiles = function () {
   this.directory('images', 'app/images', true);
 };
 
+
+Generator.prototype.showGuidance = function showGuidance() {
+  var guidance = 
+    '\nNow that everything is set up, you\'ll need to execute a build. ' +
+    '\nThis is done by running' +
+    chalk.yellow.bold('\n  grunt build') +
+    '\n' +
+    '\nWork with your files by using' +
+    chalk.yellow.bold('\n  grunt serve') +
+    '\n' +
+    '\nThis sets a watch on your files and also opens your project in ' +
+    '\na web browser using live-reload, so that any changes you make are ' +
+    '\ninstantly visible.'
+
+  console.log(guidance);
+};
+
+// This can probably be done-away with
 Generator.prototype._injectDependencies = function _injectDependencies() {
   var howToInstall =
     '\nAfter running `npm install & bower install`, inject your front end dependencies into' +
