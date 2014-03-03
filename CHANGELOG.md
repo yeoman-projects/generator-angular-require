@@ -1,3 +1,11 @@
+<a name="v0.1.11"></a>
+### v0.1.11 (2014-03-03)
+
+#### Enhancements
+
+* **app:**
+  * Bower dependencies are automatically injected into the bootstrap.js and test-bootstrap.js files ([a652d50dc0](https://github.com/aaronallport/generator-angular-require/commit/a652d50dc0d8188c5b421336d7a46951ee1cc3af))
+
 <a name="v0.1.10"></a>
 ### v0.1.10 (2014-02-12)
 
