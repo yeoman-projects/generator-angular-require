@@ -13,21 +13,16 @@ requirejs.config({
     baseUrl: '/base/app/scripts',
 
     paths: {
-        angular: '../bower_components/angular/angular'<% if (routeModule) { %>,
-        angularRoute: '../bower_components/angular-route/angular-route'<% } %><% if (cookiesModule) { %>,
-        angularCookies: '../bower_components/angular-cookies/angular-cookies'<% } %><% if (sanitizeModule) { %>,
-        angularSanitize: '../bower_components/angular-sanitize/angular-sanitize'<% } %><% if (resourceModule) { %>,
-        angularResource: '../bower_components/angular-resource/angular-resource'<% } %>,
-        angularMocks: '../bower_components/angular-mocks/angular-mocks',
+        
     },
 
     shim: {
         'angular' : {'exports' : 'angular'}<% if (routeModule) { %>,
-        'angularRoute': ['angular']<% } %><% if (cookiesModule) { %>,
-        'angularCookies': ['angular']<% } %><% if (sanitizeModule) { %>,
-        'angularSanitize': ['angular']<% } %><% if (resourceModule) { %>,
-        'angularResource': ['angular']<% } %>,
-        'angularMocks': {
+        'angular-route': ['angular']<% } %><% if (cookiesModule) { %>,
+        'angular-cookies': ['angular']<% } %><% if (sanitizeModule) { %>,
+        'angular-sanitize': ['angular']<% } %><% if (resourceModule) { %>,
+        'angular-resource': ['angular']<% } %>,
+        'angular-mocks': {
           deps:['angular'],
           'exports':'angular.mock'
         }

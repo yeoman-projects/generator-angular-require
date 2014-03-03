@@ -1,21 +1,15 @@
 /*jshint unused: vars */
 require.config({
   paths: {
-    angular: '../../bower_components/angular/angular'<% if (routeModule) { %>,
-    angularRoute: '../../bower_components/angular-route/angular-route'<% } %><% if (cookiesModule) { %>,
-    angularCookies: '../../bower_components/angular-cookies/angular-cookies'<% } %><% if (sanitizeModule) { %>,
-    angularSanitize: '../../bower_components/angular-sanitize/angular-sanitize'<% } %><% if (resourceModule) { %>,
-    angularResource: '../../bower_components/angular-resource/angular-resource'<% } %>,
-    angularMocks: '../../bower_components/angular-mocks/angular-mocks',
-    text: '../../bower_components/requirejs-text/text'
+    
   },
   shim: {
     'angular' : {'exports' : 'angular'}<% if (routeModule) { %>,
-    'angularRoute': ['angular']<% } %><% if (cookiesModule) { %>,
-    'angularCookies': ['angular']<% } %><% if (sanitizeModule) { %>,
-    'angularSanitize': ['angular']<% } %><% if (resourceModule) { %>,
-    'angularResource': ['angular']<% } %>,
-    'angularMocks': {
+    'angular-route': ['angular']<% } %><% if (cookiesModule) { %>,
+    'angular-cookies': ['angular']<% } %><% if (sanitizeModule) { %>,
+    'angular-sanitize': ['angular']<% } %><% if (resourceModule) { %>,
+    'angular-resource': ['angular']<% } %>,
+    'angular-mocks': {
       deps:['angular'],
       'exports':'angular.mock'
     }
@@ -31,10 +25,10 @@ window.name = 'NG_DEFER_BOOTSTRAP!';
 require([
   'angular',
   'app'<% if (routeModule) { %>,
-  'angularRoute'<% } %><% if (cookiesModule) { %>,
-  'angularCookies'<% } %><% if (sanitizeModule) { %>,
-  'angularSanitize'<% } %><% if (resourceModule) { %>,
-  'angularResource'<% } %>
+  'angular-route'<% } %><% if (cookiesModule) { %>,
+  'angular-cookies'<% } %><% if (sanitizeModule) { %>,
+  'angular-sanitize'<% } %><% if (resourceModule) { %>,
+  'angular-resource'<% } %>
 ], function(angular, app<% if (routeModule) { %>, ngRoutes<% } %><% if (cookiesModule) { %>, ngCookies<% } %><% if (sanitizeModule) { %>, ngSanitize<% } %><% if (resourceModule) { %>, ngResource<% } %>) {
   'use strict';
   /* jshint ignore:start */
