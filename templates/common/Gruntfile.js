@@ -364,12 +364,19 @@ module.exports = function (grunt) {
         options: {
           exclude: ['requirejs', 'json3', 'es5-shim']
         }
-      },
+      }
+    },
+
+    replace: {
       test: {
-        rjsConfig: '<%%= yeoman.app %>/../test/test-bootstrap.js',
-        options: {
-          exclude: ['requirejs', 'json3', 'es5-shim']
-        }
+        src: '<%%= yeoman.app %>/../test/test-bootstrap.js',
+        overwrite: true,
+        replacements: [{
+          from: /paths: {[^}]+}/,
+          to: function() {
+            return require('fs').readFileSync(grunt.template.process('<%%= yeoman.app %>') + '/scripts/bootstrap.js').toString().match(/paths: {[^}]+}/);
+          }
+        }]
       }
     },
 
@@ -424,7 +431,7 @@ module.exports = function (grunt) {
     'clean:dist',
     'bower-install',
     'bower:app',
-    'bower:test', // Is this really the best place to put this?
+    'replace:test',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
