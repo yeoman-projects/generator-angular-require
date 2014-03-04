@@ -2,7 +2,7 @@
 
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) [![Build Status](https://travis-ci.org/aaronallport/generator-angular-require.png?branch=master)](https://travis-ci.org/aaronallport/generator-angular-require)
 
-> Yeoman generator for AngularJS using RequireJS - lets you quickly set up a project with sensible defaults and best practises. Much <3 to the Yeoman community for creating such a great tool!
+> Yeoman generator for AngularJS using RequireJS - lets you quickly set up a project with sensible defaults and best practises.
 
 
 ## Usage
@@ -45,7 +45,7 @@ Available generators:
 **Note: Generators are to be run from the root directory of your app.**
 
 ### App
-Sets up a new AngularJS-RequireJS app, generating all the boilerplate you need to get started. The app generator also optionally installs Twitter Bootstrap and additional AngularJS modules, such as angular-resource (installed by default).
+Sets up a new AngularJS-RequireJS app, generating all the boilerplate you need to get started. The app generator also optionally installs Twitter Bootstrap and additional AngularJS modules, such as angular-resource (installed by default). All files created will be in the RequireJS/AMD format, and therefore all will be within "define" blocks.
 
 Example:
 ```bash
@@ -62,8 +62,12 @@ yo angular-require:route myroute
 
 Produces `app/scripts/controllers/myroute.js`:
 ```javascript
-angular.module('myMod').controller('MyrouteCtrl', function ($scope) {
-  // ...
+define(['angular'], function (angular) {
+  'use strict';
+  angular.module('myApp.controllers.myrouteCtrl', [])
+    .controller('myrouteCtrl', function ($scope) {
+      // ...
+    });
 });
 ```
 
@@ -82,8 +86,12 @@ yo angular-require:controller user
 
 Produces `app/scripts/controllers/user.js`:
 ```javascript
-angular.module('myMod').controller('UserCtrl', function ($scope) {
-  // ...
+define(['angular'], function (angular) {
+  'use strict';
+  angular.module('myApp.controllers.userCtrl', [])
+    .controller('userCtrl', function ($scope) {
+      // ...
+    });
 });
 ```
 ### Directive
@@ -96,15 +104,19 @@ yo angular-require:directive myDirective
 
 Produces `app/scripts/directives/myDirective.js`:
 ```javascript
-angular.module('myMod').directive('myDirective', function () {
-  return {
-    template: '<div></div>',
-    restrict: 'E',
-    link: function postLink(scope, element, attrs) {
-      element.text('this is the myDirective directive');
-    }
-  };
-});
+define(['angular'], function (angular) {
+  'use strict';
+  angular.module('myApp.directives.myDirective', [])
+    .directive('myDirective', function () {
+      return {
+        template: '<div></div>',
+        restrict: 'E',
+        link: function postLink(scope, element, attrs) {
+          element.text('this is the myDirective directive');
+        }
+      };
+    });
+  });
 ```
 
 ### Filter
@@ -117,10 +129,14 @@ yo angular-require:filter myFilter
 
 Produces `app/scripts/filters/myFilter.js`:
 ```javascript
-angular.module('myMod').filter('myFilter', function () {
-  return function (input) {
-    return 'myFilter filter:' + input;
-  };
+define(['angular'], function (angular) {
+  'use strict';
+  angular.module('myApp.filters.myFilter', [])
+    .filter('myFilter', function () {
+      return function (input) {
+        return 'myFilter filter:' + input;
+      };
+    });
 });
 ```
 
@@ -147,8 +163,12 @@ yo angular-require:service myService
 
 Produces `app/scripts/services/myService.js`:
 ```javascript
-angular.module('myMod').service('myService', function () {
-  // ...
+define(['angular'], function (angular) {
+  'use strict';
+  angular.module('myApp.services.myService', [])
+    .service('myService', function () {
+      // ...
+    });
 });
 ```
 
@@ -164,12 +184,16 @@ yo angular-require:decorator serviceName
 
 Produces `app/scripts/decorators/serviceNameDecorator.js`:
 ```javascript
-angular.module('myMod').config(function ($provide) {
-    $provide.decorator('serviceName', function ($delegate) {
-      // ...
-      return $delegate;
+define(['angular'], function (angular) {
+  'use strict';
+  angular.module('myApp.decorators.serviceName', [])
+    .config(function ($provide) {
+      $provide.decorator('serviceName', function ($delegate) {
+        // ...
+        return $delegate;
+      });
     });
-  });
+});
 ```
 
 ## Options
@@ -200,19 +224,6 @@ resolve: {
 }
 ```
 
-
-### Add to Index
-By default, new scripts are added to the index.html file. However, this may not always be suitable. Some use cases:
-
-* Manually added to the file
-* Auto-added by a 3rd party plugin
-* Using this generator as a subgenerator
-
-To skip adding them to the index, pass in the skip-add argument:
-```bash
-yo angular-require:service serviceName --skip-add
-```
-
 ## Bower Components
 
 The following packages are always installed by the [app](#app) generator:
@@ -230,6 +241,8 @@ The following additional modules are available as components on bower, and insta
 * angular-sanitize
 
 All of these can be updated with `bower update` as new versions of AngularJS are released.
+
+As part of the `grunt build` command, bower dependencies are inserted into the `bootstrap.js` file using the `bower:app` task specified in the Gruntfile. The `test-bootstrap.js` file is taken care of by keeping it's dependencies in line with `bootstrap.js`. This is handled by the `replace:test` task within the Gruntfile.
 
 ## Configuration
 Yeoman generated projects can be further tweaked according to your needs by modifying project files appropriately.
@@ -270,3 +283,10 @@ When submitting a new feature, add tests that cover the feature.
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/aaronallport/generator-angular-require/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
+## And finally
+
+Much <3 to the Yeoman community for creating such a great tool!
+
+If you like generator-angular-require, please tell your friends and colleagues.
+
+Thank you!
