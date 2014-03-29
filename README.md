@@ -287,6 +287,6 @@ When submitting a new feature, add tests that cover the feature.
 
 Much <3 to the Yeoman community for creating such a great tool!
 
-If you like generator-angular-require, please tell your friends and colleagues.
+If you like generator-angular-require, please tell your friends and colleagues. If you are writing about or mentioning generator-angular-require, let me know and I will happily link to it from here.
 
 Thank you!
