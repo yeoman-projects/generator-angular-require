@@ -99,7 +99,6 @@ module.exports = function (grunt) {
     jshint: {
       options: {
         jshintrc: '.jshintrc',
-        ignores: '<%%= yeoman.app %>/scripts/bootstrap-built.js',
         reporter: require('jshint-stylish')
       },
       all: [
@@ -360,7 +359,7 @@ module.exports = function (grunt) {
     // Settings for grunt-bower-requirejs
     bower: {
       app: {
-        rjsConfig: '<%%= yeoman.app %>/scripts/bootstrap.js',
+        rjsConfig: '<%%= yeoman.app %>/scripts/main.js',
         options: {
           exclude: ['requirejs', 'json3', 'es5-shim']
         }
@@ -369,12 +368,12 @@ module.exports = function (grunt) {
 
     replace: {
       test: {
-        src: '<%%= yeoman.app %>/../test/test-bootstrap.js',
+        src: '<%%= yeoman.app %>/../test/test-main.js',
         overwrite: true,
         replacements: [{
           from: /paths: {[^}]+}/,
           to: function() {
-            return require('fs').readFileSync(grunt.template.process('<%%= yeoman.app %>') + '/scripts/bootstrap.js').toString().match(/paths: {[^}]+}/);
+            return require('fs').readFileSync(grunt.template.process('<%%= yeoman.app %>') + '/scripts/main.js').toString().match(/paths: {[^}]+}/);
           }
         }]
       }
@@ -382,17 +381,20 @@ module.exports = function (grunt) {
 
     // r.js compile config
     requirejs: {
-      compile: {
+      dist: {
         options: {
+          dir: "<%%= yeoman.dist %>/scripts/",
+          modules: [{
+            name: 'main'
+          }],
+          preserveLicenseComments: false, // remove all comments
+          removeCombined: true,
           baseUrl: '<%%= yeoman.app %>/scripts',
-          mainConfigFile: '<%%= yeoman.app %>/scripts/bootstrap.js',
+          mainConfigFile: '<%%= yeoman.app %>/scripts/main.js',
           optimize: 'uglify2',
           uglify2: {
             mangle: false
-          },
-          include: ['angular'],
-          name: 'bootstrap',
-          out: '<%%= yeoman.app %>/scripts/bootstrap-built.js'
+          }
         }
       }
     }
@@ -444,7 +446,7 @@ module.exports = function (grunt) {
     // 'uglify',
     'rev',
     'usemin',
-    'requirejs',
+    'requirejs:dist',
     'htmlmin'
   ]);
 

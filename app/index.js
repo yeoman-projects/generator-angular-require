@@ -236,9 +236,9 @@ Generator.prototype.packageFiles = function () {
   this.template('../../templates/common/Gruntfile.js', 'Gruntfile.js');
 
   // RequireJS App config
-  this.template('../../templates/common/scripts/bootstrap.js', 'app/scripts/bootstrap.js');
+  this.template('../../templates/common/scripts/main.js', 'app/scripts/main.js');
   // RequireJS Test config
-  this.template('../../templates/common/scripts/test-bootstrap.js', 'test/test-bootstrap.js');
+  this.template('../../templates/common/scripts/test-main.js', 'test/test-main.js');
 };
 
 Generator.prototype.imageFiles = function () {
@@ -248,7 +248,7 @@ Generator.prototype.imageFiles = function () {
 
 
 Generator.prototype.showGuidance = function showGuidance() {
-  var guidance = 
+  var guidance =
     '\nNow that everything is set up, you\'ll need to execute a build. ' +
     '\nThis is done by running' +
     chalk.yellow.bold('\n  grunt build') +
