@@ -1,6 +1,12 @@
+<a name="v0.1.13"></a>
+### v0.1.13 (2014-04-01)
+
+#### Bug Fixes
+
+* **generator:** r.js dist fix ([0756c4f4](https://github.com/aaronallport/generator-angular-require/commit/0756c4f4718c1374a799fad7420d46905bac7deb))
+
 <a name="v0.1.12"></a>
 ### v0.1.12 (2014-04-01)
-
 
 #### Bug Fixes
 
