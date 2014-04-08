@@ -1,4 +1,4 @@
-# AngularJS-RequireJS generator 
+# AngularJS-RequireJS generator
 
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) [![Build Status](https://travis-ci.org/aaronallport/generator-angular-require.png?branch=master)](https://travis-ci.org/aaronallport/generator-angular-require)
 
@@ -21,6 +21,8 @@ Run `yo angular-require`, optionally passing an app name:
 ```
 yo angular-require [app-name]
 ```
+
+`grunt build` must be run before anything else due to dependency population in the RequireJS config and the like (this will be fixed in a future version).
 
 Run `grunt` for building and `grunt serve` for preview
 
