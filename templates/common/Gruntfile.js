@@ -152,7 +152,7 @@ module.exports = function (grunt) {
     // Automatically inject Bower components into the app
     bowerInstall: {
       app: {
-        src: []'<%%= yeoman.app %>/index.html'],
+        src: ['<%%= yeoman.app %>/index.html'],
         ignorePath: '<%%= yeoman.app %>/'
       }<% if (compass) { %>,
       sass: {
