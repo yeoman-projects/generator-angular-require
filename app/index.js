@@ -250,10 +250,10 @@ Generator.prototype.showGuidance = function showGuidance() {
   var guidance =
     '\nNow that everything is set up, you\'ll need to execute a build. ' +
     '\nThis is done by running' +
-    chalk.yellow.bold('\n  grunt build') +
+    '\n  grunt build' +
     '\n' +
     '\nWork with your files by using' +
-    chalk.yellow.bold('\n  grunt serve') +
+    '\n  grunt serve' +
     '\n' +
     '\nThis sets a watch on your files and also opens your project in ' +
     '\na web browser using live-reload, so that any changes you make are ' +
