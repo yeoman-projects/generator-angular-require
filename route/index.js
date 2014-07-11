@@ -14,6 +14,12 @@ var Generator = module.exports = function Generator() {
 util.inherits(Generator, ScriptBase);
 
 Generator.prototype.rewriteAppJs = function () {
+
+  this.uri = this.name;
+  if (this.options.uri) {
+    this.uri = this.options.uri;
+  }
+
   var config = {
     file: path.join(
       this.env.options.appPath,
@@ -25,7 +31,7 @@ Generator.prototype.rewriteAppJs = function () {
     ]
   };
 
-  config.splicable.unshift(".when('/" + this.name + "', {");
+  config.splicable.unshift(".when('/" + this.uri + "', {");
   config.splicable.push("})");
 
   angularUtils.rewriteFile(config);
