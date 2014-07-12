@@ -88,8 +88,8 @@ util.inherits(Generator, yeoman.generators.Base);
 Generator.prototype.welcome = function welcome() {
   // welcome message
   if (!this.options['skip-welcome-message']) {
-    console.log(this.yeoman);
-    console.log(
+    this.log(this.yeoman);
+    this.log(
       'Out of the box I include Bootstrap and some AngularJS recommended modules.\n'
     );
   }
@@ -265,7 +265,7 @@ Generator.prototype.showGuidance = function showGuidance() {
 // This can probably be done-away with
 Generator.prototype._injectDependencies = function _injectDependencies() {
   if (this.options['skip-install']) {
-    console.log(
+    this.log(
       '\nAfter running `npm install & bower install`, inject your front end dependencies into' +
       '\nyour HTML by running:' +
       '\n' +
