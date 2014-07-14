@@ -193,16 +193,14 @@ module.exports = function (grunt) {
     },<% } %>
 
     // Renames files for browser caching purposes
-    rev: {
+    filerev: {
       dist: {
-        files: {
-          src: [
-            '<%%= yeoman.dist %>/scripts/{,*/}*.js',
-            '<%%= yeoman.dist %>/styles/{,*/}*.css',
-            '<%%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-            '<%%= yeoman.dist %>/styles/fonts/*'
-          ]
-        }
+        src: [
+          '<%%= yeoman.dist %>/scripts/{,*/}*.js',
+          '<%%= yeoman.dist %>/styles/{,*/}*.css',
+          '<%%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+          '<%%= yeoman.dist %>/styles/fonts/*'
+        ]
       }
     },
 
@@ -216,7 +214,7 @@ module.exports = function (grunt) {
       }
     },
 
-    // Performs rewrites based on rev and the useminPrepare configuration
+    // Performs rewrites based on filerev and the useminPrepare configuration
     usemin: {
       html: ['<%%= yeoman.dist %>/{,*/}*.html'],
       css: ['<%%= yeoman.dist %>/styles/{,*/}*.css'],
@@ -466,7 +464,7 @@ module.exports = function (grunt) {
     'cssmin',
     // Below task commented out as r.js (via grunt-contrib-requirejs) will take care of this
     // 'uglify',
-    'rev',
+    'filerev',
     'usemin',
     'requirejs:dist',
     'htmlmin'
