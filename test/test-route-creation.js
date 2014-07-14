@@ -21,7 +21,7 @@ describe('Angular generator route mechanism', function () {
       '../../view',
       '../../main', [
         helpers.createDummyGenerator(),
-        'karma:app'
+        'karma-require:app'
       ]
     ];
     helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
