@@ -53,7 +53,7 @@ describe('Angular-RequireJS generator', function () {
       if (err) {
         done(err);
       }
-      angular = helpers.createGenerator('angular:app', deps, false, genOptions);
+      angular = helpers.createGenerator('angular-require:app', deps, false, genOptions);
       done();
     });
   });
