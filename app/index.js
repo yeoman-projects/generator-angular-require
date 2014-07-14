@@ -81,6 +81,7 @@ var Generator = module.exports = function Generator(args, options) {
   });
 
   this.pkg = require('../package.json');
+  this.sourceRoot(path.join(__dirname, '../templates/common'));
 };
 
 util.inherits(Generator, yeoman.generators.Base);
@@ -195,7 +196,7 @@ Generator.prototype.askForModules = function askForModules() {
 
 Generator.prototype.readIndex = function readIndex() {
   this.ngRoute = this.env.options.ngRoute;
-  this.indexFile = this.engine(this.read('../../templates/common/index.html'), this);
+  this.indexFile = this.engine(this.read('app/index.html'), this);
 };
 
 Generator.prototype.bootstrapFiles = function bootstrapFiles() {
@@ -203,13 +204,13 @@ Generator.prototype.bootstrapFiles = function bootstrapFiles() {
   var mainFile = 'main.' + (sass ? 's' : '') + 'css';
 
   if (this.bootstrap && !sass) {
-    this.copy('fonts/glyphicons-halflings-regular.eot', 'app/fonts/glyphicons-halflings-regular.eot');
-    this.copy('fonts/glyphicons-halflings-regular.ttf', 'app/fonts/glyphicons-halflings-regular.ttf');
-    this.copy('fonts/glyphicons-halflings-regular.svg', 'app/fonts/glyphicons-halflings-regular.svg');
-    this.copy('fonts/glyphicons-halflings-regular.woff', 'app/fonts/glyphicons-halflings-regular.woff');
+    this.copy('app/fonts/glyphicons-halflings-regular.eot');
+    this.copy('app/fonts/glyphicons-halflings-regular.ttf');
+    this.copy('app/fonts/glyphicons-halflings-regular.svg');
+    this.copy('app/fonts/glyphicons-halflings-regular.woff');
   }
 
-  this.copy('styles/' + mainFile, 'app/styles/' + mainFile);
+  this.copy('app/styles/' + mainFile);
 };
 
 /*
@@ -230,9 +231,9 @@ Generator.prototype.createIndexHtml = function createIndexHtml() {
 };
 
 Generator.prototype.packageFiles = function () {
-  this.template('../../templates/common/_bower.json', 'bower.json');
-  this.template('../../templates/common/_package.json', 'package.json');
-  this.template('../../templates/common/Gruntfile.js', 'Gruntfile.js');
+  this.template('root/_bower.json', 'bower.json');
+  this.template('root/_package.json', 'package.json');
+  this.template('root/_Gruntfile.js', 'Gruntfile.js');
 
   // RequireJS App config
   this.template('../../templates/common/scripts/main.js', 'app/scripts/main.js');
@@ -241,8 +242,7 @@ Generator.prototype.packageFiles = function () {
 };
 
 Generator.prototype.imageFiles = function () {
-  this.sourceRoot(path.join(__dirname, 'templates'));
-  this.directory('images', 'app/images', true);
+  this.directory('app/images');
 };
 
 
