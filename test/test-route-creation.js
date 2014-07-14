@@ -1,5 +1,6 @@
 /*global describe, before, it, beforeEach */
 'use strict';
+
 var fs = require('fs');
 var assert = require('assert');
 var path = require('path');
@@ -8,9 +9,7 @@ var generators = require('yeoman-generator');
 var helpers = require('yeoman-generator').test;
 var _ = require('underscore.string');
 
-
 describe('Angular generator route mechanism', function () {
-  var folderName = 'routeTests';
   var angular;
 
   beforeEach(function (done) {
@@ -25,11 +24,11 @@ describe('Angular generator route mechanism', function () {
         'karma:app'
       ]
     ];
-    helpers.testDirectory(path.join(__dirname, folderName), function (err) {
+    helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
       if (err) {
         done(err);
       }
-      angular = helpers.createGenerator('angular:app', deps);
+      angular = helpers.createGenerator('angular-require:app', deps);
       angular.options['skip-install'] = true;
       angular.options['skip-welcome-message'] = true;
 
@@ -62,7 +61,7 @@ describe('Angular generator route mechanism', function () {
       '../../view'
     ];
 
-    var angularRouteGenerator = helpers.createGenerator('angular:route', deps, [route]);
+    var angularRouteGenerator = helpers.createGenerator('angular-require:route', deps, [route]);
 
     angularRouteGenerator.run({}, function(){
 
@@ -96,7 +95,7 @@ describe('Angular generator route mechanism', function () {
       '../../view'
     ];
 
-    var angularRouteGenerator = helpers.createGenerator('angular:route', deps, [route], { uri: uri });
+    var angularRouteGenerator = helpers.createGenerator('angular-require:route', deps, [route], { uri: uri });
 
     angularRouteGenerator.run({}, function(){
 

@@ -1,5 +1,6 @@
 /*global describe, before, it, beforeEach */
 'use strict';
+
 var fs = require('fs');
 var assert = require('assert');
 var path = require('path');
@@ -18,11 +19,25 @@ describe('Angular-RequireJS generator', function () {
     'app/styles/main.scss',
     'app/views/main.html',
     '.bowerrc',
+    '.editorconfig',
+    '.gitignore',
+    '.jshintrc',
     'Gruntfile.js',
     'package.json',
     'bower.json',
     'app/index.html'
   ];
+  var mockPrompts = {
+    compass: true,
+    bootstrap: true,
+    compassBootstrap: true,
+    modules: []
+  };
+  var genOptions = {
+    'skip-install': true,
+    'skip-welcome-message': true,
+    'skip-message': true
+  };
 
   beforeEach(function (done) {
     var deps = [
@@ -38,42 +53,29 @@ describe('Angular-RequireJS generator', function () {
       if (err) {
         done(err);
       }
-      angular = helpers.createGenerator('angular-require:app', deps);
-      angular.options['skip-install'] = true;
-      angular.options['skip-welcome-message'] = true;
+      angular = helpers.createGenerator('angular:app', deps, false, genOptions);
       done();
     });
   });
 
   it('should generate dotfiles', function (done) {
-    helpers.mockPrompt(angular, {
-      compass: true,
-      bootstrap: true,
-      compassBootstrap: true,
-      modules: []
-    });
+    helpers.mockPrompt(angular, mockPrompts);
 
     angular.run({}, function () {
-      helpers.assertFile(['.bowerrc', '.gitignore', '.editorconfig', '.jshintrc']);
+      helpers.assertFile(expected);
       done();
     });
   });
 
   it('creates expected JS files', function (done) {
-    var expect = [].concat(expected, [
-      'app/scripts/app.js',
-      'app/scripts/controllers/main.js',
-      'test/spec/controllers/main.js'
-    ]);
-    helpers.mockPrompt(angular, {
-      compass: true,
-      bootstrap: true,
-      compassBootstrap: true,
-      modules: []
-    });
+    helpers.mockPrompt(angular, mockPrompts);
 
     angular.run({}, function() {
-      helpers.assertFile(expected);
+      helpers.assertFile([].concat(expected, [
+        'app/scripts/app.js',
+        'app/scripts/controllers/main.js',
+        'test/spec/controllers/main.js'
+      ]));
       done();
     });
   });
@@ -106,16 +108,10 @@ describe('Angular-RequireJS generator', function () {
     var angularGenerator;
     var name = 'foo';
     var deps = [path.join('../..', generatorType)];
-    angularGenerator = helpers.createGenerator('angular-require:' + generatorType, deps, [name]);
+    angularGenerator = helpers.createGenerator('angular-require:' + generatorType, deps, [name], genOptions);
 
-    helpers.mockPrompt(angular, {
-      compass: true,
-      bootstrap: true,
-      compassBootstrap: true,
-      modules: []
-    });
+    helpers.mockPrompt(angular, mockPrompts);
     angular.run([], function (){
-      angularGenerator.options['skip-welcome-message'] = true;
       angularGenerator.run([], function () {
         assert.fileContent([
           [
@@ -176,14 +172,9 @@ describe('Angular-RequireJS generator', function () {
     it('should generate a new view', function (done) {
       var angularView;
       var deps = ['../../view'];
-      angularView = helpers.createGenerator('angular-require:view', deps, ['foo']);
+      angularView = helpers.createGenerator('angular-require:view', deps, ['foo'], genOptions);
 
-      helpers.mockPrompt(angular, {
-        compass: true,
-        bootstrap: true,
-        compassBootstrap: true,
-        modules: []
-      });
+      helpers.mockPrompt(angular, mockPrompts);
       angular.run([], function (){
         angularView.run([], function () {
           helpers.assertFile(
@@ -197,14 +188,9 @@ describe('Angular-RequireJS generator', function () {
     it('should generate a new view in subdirectories', function (done) {
       var angularView;
       var deps = ['../../view'];
-      angularView = helpers.createGenerator('angular-require:view', deps, ['foo/bar']);
+      angularView = helpers.createGenerator('angular-require:view', deps, ['foo/bar'], genOptions);
 
-      helpers.mockPrompt(angular, {
-        compass: true,
-        bootstrap: true,
-        compassBootstrap: true,
-        modules: []
-      });
+      helpers.mockPrompt(angular, mockPrompts);
       angular.run([], function (){
         angularView.run([], function () {
           helpers.assertFile(
