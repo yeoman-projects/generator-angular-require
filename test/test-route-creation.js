@@ -9,7 +9,7 @@ var generators = require('yeoman-generator');
 var helpers = require('yeoman-generator').test;
 var _ = require('underscore.string');
 
-describe('Angular-Require generator route mechanism', function () {
+describe('Angular-RequireJS generator route mechanism', function () {
   var angular;
 
   beforeEach(function (done) {
@@ -51,7 +51,7 @@ describe('Angular-Require generator route mechanism', function () {
     var route = 'simpleroute';
     var expected = [
       'app/scripts/controllers/' + route + '.js',
-      'test/spec/controllers/' + route + '.js',
+      'test/spec/controllers/' + route + 'Spec.js',
       'app/views/' + route + '.html'
     ];
     var deps = [
@@ -84,7 +84,7 @@ describe('Angular-Require generator route mechanism', function () {
     var uri = 'segment1/segment2/:parameter'
     var expected = [
       'app/scripts/controllers/' + route + '.js',
-      'test/spec/controllers/' + route + '.js',
+      'test/spec/controllers/' + route + 'Spec.js',
       'app/views/' + route + '.html'
     ];
     var deps = [
