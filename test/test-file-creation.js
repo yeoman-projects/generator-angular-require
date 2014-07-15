@@ -44,7 +44,8 @@ describe('Angular-RequireJS generator', function () {
       '../../app',
       '../../common',
       '../../controller',
-      '../../main', [
+      '../../main',
+      [
         helpers.createDummyGenerator(),
         'karma-require:app'
       ]
@@ -74,7 +75,7 @@ describe('Angular-RequireJS generator', function () {
       helpers.assertFile([].concat(expected, [
         'app/scripts/app.js',
         'app/scripts/controllers/main.js',
-        'test/spec/controllers/main.js'
+        'test/spec/controllers/mainSpec.js'
       ]));
       done();
     });
@@ -122,7 +123,7 @@ describe('Angular-RequireJS generator', function () {
             )
           ],
           [
-            path.join('test/spec', targetDirectory, name + '.js'),
+            path.join('test/spec', targetDirectory, name + 'Spec.js'),
             new RegExp(
               'describe\\(\'' + _.classify(specType) + ': ' + specNameFn(name) + suffix + '\'',
               'g'

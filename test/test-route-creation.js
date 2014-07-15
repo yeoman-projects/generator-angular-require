@@ -19,7 +19,8 @@ describe('Angular generator route mechanism', function () {
       '../../controller',
       '../../route',
       '../../view',
-      '../../main', [
+      '../../main',
+      [
         helpers.createDummyGenerator(),
         'karma-require:app'
       ]
