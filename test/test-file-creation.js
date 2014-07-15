@@ -111,7 +111,7 @@ describe('Angular-RequireJS generator', function () {
     angularGenerator = helpers.createGenerator('angular-require:' + generatorType, deps, [name], genOptions);
 
     helpers.mockPrompt(angular, mockPrompts);
-    angular.run([], function (){
+    angular.run([], function () {
       angularGenerator.run([], function () {
         assert.fileContent([
           [
@@ -177,9 +177,7 @@ describe('Angular-RequireJS generator', function () {
       helpers.mockPrompt(angular, mockPrompts);
       angular.run([], function (){
         angularView.run([], function () {
-          helpers.assertFile(
-            ['app/views/foo.html']
-          );
+          helpers.assertFile(['app/views/foo.html']);
           done();
         });
       });
@@ -191,11 +189,9 @@ describe('Angular-RequireJS generator', function () {
       angularView = helpers.createGenerator('angular-require:view', deps, ['foo/bar'], genOptions);
 
       helpers.mockPrompt(angular, mockPrompts);
-      angular.run([], function (){
+      angular.run([], function () {
         angularView.run([], function () {
-          helpers.assertFile(
-            ['app/views/foo/bar.html']
-          );
+          helpers.assertFile(['app/views/foo/bar.html']);
           done();
         });
       });
