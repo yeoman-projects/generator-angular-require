@@ -2,7 +2,7 @@
 
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) [![Build Status](https://travis-ci.org/aaronallport/generator-angular-require.svg?branch=master)](https://travis-ci.org/aaronallport/generator-angular-require)
 
-> Yeoman generator for AngularJS using RequireJS - lets you quickly set up a project with sensible defaults and best practises.
+> Yeoman generator for AngularJS using RequireJS - lets you quickly set up a project with sensible defaults and best practices.
 
 
 ## Usage
