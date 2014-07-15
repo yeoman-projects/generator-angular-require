@@ -219,7 +219,11 @@ Generator.prototype.readIndex = function readIndex() {
 };
 
 Generator.prototype.bootstrapFiles = function bootstrapFiles() {
-  this.copy('app/styles/main.' + (this.compass ? 's' : '') + 'css');
+  var cssFile = 'styles/main.' + (this.compass ? 's' : '') + 'css';
+  this.copy(
+    path.join('app', cssFile),
+    path.join(this.appPath, cssFile)
+  );
 };
 
 /*
@@ -241,6 +245,7 @@ Generator.prototype.createIndexHtml = function createIndexHtml() {
 
 Generator.prototype.packageFiles = function packageFiles() {
   this.template('root/_bower.json', 'bower.json');
+  this.template('root/_bowerrc', '.bowerrc');
   this.template('root/_package.json', 'package.json');
   this.template('root/_Gruntfile.js', 'Gruntfile.js');
 
@@ -277,9 +282,9 @@ Generator.prototype._injectDependencies = function _injectDependencies() {
     );
   } else {
     wiredep({
-      directory: 'app/bower_components',
+      directory: this.appPath + '/bower_components',
       bowerJson: JSON.parse(fs.readFileSync('./bower.json')),
-      ignorePath: 'app/',
+      ignorePath: this.appPath + '/',
       src: 'app/index.html',
       fileTypes: {
         html: {
