@@ -239,11 +239,6 @@ Generator.prototype.packageFiles = function packageFiles() {
   this.template('../../templates/common/scripts/test-main.js', 'test/test-main.js');
 };
 
-Generator.prototype.imageFiles = function imageFiles() {
-  this.directory('app/images');
-};
-
-
 Generator.prototype.showGuidance = function showGuidance() {
   var guidance =
     '\nNow that everything is set up, you\'ll need to execute a build. ' +
