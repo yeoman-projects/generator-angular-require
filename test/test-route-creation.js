@@ -9,7 +9,7 @@ var generators = require('yeoman-generator');
 var helpers = require('yeoman-generator').test;
 var _ = require('underscore.string');
 
-describe('Angular generator route mechanism', function () {
+describe('Angular-Require generator route mechanism', function () {
   var angular;
 
   beforeEach(function (done) {
@@ -32,6 +32,7 @@ describe('Angular generator route mechanism', function () {
       angular = helpers.createGenerator('angular-require:app', deps);
       angular.options['skip-install'] = true;
       angular.options['skip-welcome-message'] = true;
+      angular.options['skip-message'] = true;
 
       helpers.mockPrompt(angular, {
         compass: true,

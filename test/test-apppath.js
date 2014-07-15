@@ -48,14 +48,14 @@
 //       '../../controller',
 //       '../../main', [
 //         helpers.createDummyGenerator(),
-//         'karma:app'
+//         'karma-require:app'
 //       ]
 //     ];
 //     helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
 //       if (err) {
 //         done(err);
 //       }
-//       angular = helpers.createGenerator('angular:app', deps, false, genOptions);
+//       angular = helpers.createGenerator('angular-require:app', deps, false, genOptions);
 //       done();
 //     });
 //   });
@@ -124,7 +124,7 @@
 //     var angularGenerator;
 //     var name = 'foo';
 //     var deps = [path.join('../..', generatorType)];
-//     angularGenerator = helpers.createGenerator('angular:' + generatorType, deps, [name], genOptions);
+//     angularGenerator = helpers.createGenerator('angular-require:' + generatorType, deps, [name], genOptions);
 //
 //     helpers.mockPrompt(angular, mockPrompts);
 //     angular.run([], function () {
@@ -182,7 +182,7 @@
 //     it('should generate a new view', function (done) {
 //       var angularView;
 //       var deps = ['../../view'];
-//       angularView = helpers.createGenerator('angular:view', deps, ['foo'], genOptions);
+//       angularView = helpers.createGenerator('angular-require:view', deps, ['foo'], genOptions);
 //
 //       helpers.mockPrompt(angular, mockPrompts);
 //       angular.run([], function () {
@@ -196,7 +196,7 @@
 //     it('should generate a new view in subdirectories', function (done) {
 //       var angularView;
 //       var deps = ['../../view'];
-//       angularView = helpers.createGenerator('angular:view', deps, ['foo/bar'], genOptions);
+//       angularView = helpers.createGenerator('angular-require:view', deps, ['foo/bar'], genOptions);
 //
 //       helpers.mockPrompt(angular, mockPrompts);
 //       angular.run([], function () {
