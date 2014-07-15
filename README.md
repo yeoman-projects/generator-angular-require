@@ -216,7 +216,7 @@ CoffeeScript is not supported at this time. Sorry. We'll take a look at CoffeeSc
 
 **Deprecated**
 
-[Related Issue #452](https://github.com/yeoman/generator-angular/issues/452): This option has been removed in accordance with this issue on GitHub. The recommended build process uses `ngmin`, a tool that automatically adds these annotations. However, if you'd rather not use `ngmin`, you have to add these annotations manually yourself. **One thing to note is that `ngmin` does not produce minsafe code for things that are not main level elements like controller, services, providers, etc.:
+[Related Issue #452](https://github.com/yeoman/generator-angular/issues/452): This option has been removed in accordance with this issue on GitHub. The recommended build process uses `ngmin`, a tool that automatically adds these annotations. However, if you'd rather not use `ngmin`, you have to add these annotations manually yourself. *One thing to note is that `ngmin` does not produce minsafe code for things that are not main level elements like controller, services, providers, etc.:*
 ```javascript
 resolve: {
   User: function(myService) {
@@ -286,6 +286,10 @@ When submitting a PR, make sure that the commit messages match the [AngularJS co
 When submitting a bugfix, write a test that exposes the bug and fails before applying your fix. Submit the test alongside the fix.
 
 When submitting a new feature, add tests that cover the feature.
+
+## Changelog
+
+Recent changes can be viewed on Github on the [Releases Page](https://github.com/aaronallport/generator-angular-require/releases)
 
 ## License
 

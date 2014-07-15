@@ -14,6 +14,25 @@
   ],
   "author": "Aaron Allport",
   "main": "app/index.js",
+  "files": [
+    "app",
+    "common",
+    "constant",
+    "controller",
+    "decorator",
+    "directive",
+    "factory",
+    "filter",
+    "main",
+    "provider",
+    "route",
+    "service",
+    "templates",
+    "value",
+    "view",
+    "script-base.js",
+    "util.js"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/aaronallport/generator-angular-require.git"
