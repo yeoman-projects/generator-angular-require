@@ -51,7 +51,7 @@ describe('Angular-RequireJS generator route mechanism', function () {
 
       angular.run({}, function () {
         angular = helpers.createGenerator(
-          'angular:route',
+          'angular-require:route',
           [
             '../../controller',
             '../../route',
@@ -73,7 +73,7 @@ describe('Angular-RequireJS generator route mechanism', function () {
       angular.run({}, function(e) {
         helpers.assertFile(expected);
         helpers.assertFileContent(
-          'app/scripts/app.js',
+          'app/scripts/main.js',
           new RegExp('when\\(\'/' + route + '\'')
         );
 
@@ -83,13 +83,13 @@ describe('Angular-RequireJS generator route mechanism', function () {
 
     // Test with URI specified explicitly
     it('should generate route items with the route uri given', function(done){
-      var uri = 'segment1/segment2/:parameter'
+      var uri = 'segment1/segment2/:parameter';
 
       angular.options.uri = uri;
       angular.run({}, function() {
         helpers.assertFile(expected);
         helpers.assertFileContent(
-          'app/scripts/app.js',
+          'app/scripts/main.js',
           new RegExp('when\\(\'/' + uri + '\'')
         );
 

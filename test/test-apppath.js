@@ -49,7 +49,8 @@ describe('Angular-RequireJS generator appPath option', function () {
           '../../app',
           '../../common',
           '../../controller',
-          '../../main', [
+          '../../main',
+          [
             helpers.createDummyGenerator(),
             'karma-require:app'
           ]
@@ -67,7 +68,6 @@ describe('Angular-RequireJS generator appPath option', function () {
     it('should generate dotfiles for apppath', function (done) {
       angular.run({}, function () {
         helpers.assertFile(expected);
-        console.log('a')
         done();
       });
     });
@@ -75,9 +75,9 @@ describe('Angular-RequireJS generator appPath option', function () {
     it('creates expected JS files', function (done) {
       angular.run({}, function() {
         helpers.assertFile([].concat(expected, [
-          appPath + '/scripts/app.js',
+          appPath + '/scripts/main.js',
           appPath + '/scripts/controllers/main.js',
-          'test/spec/controllers/main.js'
+          'test/spec/controllers/mainSpec.js'
         ]));
         done();
       });

@@ -95,7 +95,6 @@ var Generator = module.exports = function Generator(args, options) {
         args: ['about']
       });
     }
-
   });
 
   this.pkg = require('../package.json');
@@ -234,18 +233,6 @@ Generator.prototype.bootstrapFiles = function bootstrapFiles() {
     path.join(this.appPath, cssFile)
   );
 };
-
-/*
-Generator.prototype.appJs = function appJs() {
-  this.indexFile = this.appendFiles({
-    html: this.indexFile,
-    fileType: 'js',
-    optimizedPath: 'scripts/scripts.js',
-    sourceFileList: ['scripts/app.js', 'scripts/controllers/main.js'],
-    searchPath: ['.tmp', 'app']
-  });
-};
-*/
 
 Generator.prototype.createIndexHtml = function createIndexHtml() {
   this.indexFile = this.indexFile.replace(/&apos;/g, "'");

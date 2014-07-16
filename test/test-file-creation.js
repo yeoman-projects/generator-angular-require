@@ -44,7 +44,7 @@ describe('Angular-RequireJS generator', function () {
       }
 
       angular = helpers.createGenerator(
-        'angular:app',
+        'angular-require:app',
         [
           '../../app',
           '../../common',
@@ -85,31 +85,32 @@ describe('Angular-RequireJS generator', function () {
 
   describe('Service Subgenerators', function () {
     var generatorTest = function (generatorType, specType, targetDirectory, scriptNameFn, specNameFn, suffix, done) {
-    var name = 'foo';
-    var deps = [path.join('../..', generatorType)];
-    var genTester = helpers.createGenerator('angular-require:' + generatorType, deps, [name], genOptions);
+      var name = 'foo';
+      var deps = [path.join('../..', generatorType)];
+      var genTester = helpers.createGenerator('angular-require:' + generatorType, deps, [name], genOptions);
 
-    angular.run([], function () {
-      genTester.run([], function () {
-        helpers.assertFileContent([
-          [
-            path.join('app/scripts', targetDirectory, name + '.js'),
-            new RegExp(
-              generatorType + '\\(\'' + scriptNameFn(name) + suffix + '\'',
-              'g'
-            )
-          ],
-          [
-            path.join('test/spec', targetDirectory, name + '.js'),
-            new RegExp(
-              'describe\\(\'' + _.classify(specType) + ': ' + specNameFn(name) + suffix + '\'',
-              'g'
-            )
-          ]
-        ]);
-        done();
+      angular.run([], function () {
+        genTester.run([], function () {
+          helpers.assertFileContent([
+            [
+              path.join('app/scripts', targetDirectory, name + '.js'),
+              new RegExp(
+                generatorType + '\\(\'' + scriptNameFn(name) + suffix + '\'',
+                'g'
+              )
+            ],
+            [
+              path.join('test/spec', targetDirectory, name + '.js'),
+              new RegExp(
+                'describe\\(\'' + _.classify(specType) + ': ' + specNameFn(name) + suffix + '\'',
+                'g'
+              )
+            ]
+          ]);
+          done();
+        });
       });
-    });
+    }
 
     it('should generate a new controller', function (done) {
       generatorTest('controller', 'controller', 'controllers', _.classify, _.classify, 'Ctrl', done);

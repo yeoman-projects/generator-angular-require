@@ -47,7 +47,7 @@ describe('Angular-RequireJS generator template mechanism', function () {
         'app/scripts/app.js',
         'app/scripts/controllers/main.js',
         'app/index.html',
-        'test/spec/controllers/main.js'
+        'test/spec/controllers/mainSpec.js'
       ]);
 
       helpers.assertFileContent(
@@ -62,7 +62,7 @@ describe('Angular-RequireJS generator template mechanism', function () {
         'test/spec/controllers/mainSpec.js',
         new RegExp('module\\(\'' + appName + 'App.controllers.MainCtrl\'')
       );
-      
+
       helpers.assertFileContent(
         'app/index.html',
         new RegExp('ng-app=\"' + appName + 'App\"')
