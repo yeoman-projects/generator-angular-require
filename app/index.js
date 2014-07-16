@@ -79,6 +79,14 @@ var Generator = module.exports = function Generator(args, options) {
       enabledComponents.push('angular-route/angular-route.js');
     }
 
+    if (this.animateModule) {
+      enabledComponents.push('angular-animate/angular-animate.js');
+    }
+
+    if (this.touchModule) {
+      enabledComponents.push('angular-touch/angular-touch.js');
+    }
+
     this.invoke('karma-require:app', {
       options: {
         travis: true,
@@ -186,6 +194,14 @@ Generator.prototype.askForModules = function askForModules() {
       value: 'routeModule',
       name: 'angular-route.js',
       checked: true
+    }, {
+      value: 'animateModule',
+      name: 'angular-animate.js',
+      checked: true
+    }, {
+      value: 'touchModule',
+      name: 'angular-touch.js',
+      checked: true
     }]
   }];
 
@@ -195,6 +211,8 @@ Generator.prototype.askForModules = function askForModules() {
     this.cookiesModule = hasMod('cookiesModule');
     this.sanitizeModule = hasMod('sanitizeModule');
     this.routeModule = hasMod('routeModule');
+    this.animateModule = hasMod('animateModule');
+    this.touchModule = hasMod('touchModule');
 
     var angMods = [];
 
@@ -205,12 +223,24 @@ Generator.prototype.askForModules = function askForModules() {
     if (this.resourceModule) {
       angMods.push("'ngResource'");
     }
+
     if (this.sanitizeModule) {
       angMods.push("'ngSanitize'");
     }
+
     if (this.routeModule) {
       angMods.push("'ngRoute'");
       this.env.options.ngRoute = true;
+    }
+
+    if (this.routeModule) {
+      angMods.push("'ngAnimate'");
+      this.env.options.ngAnimate = true;
+    }
+
+    if (this.routeModule) {
+      angMods.push("'ngTouch'");
+      this.env.options.ngTouch = true;
     }
 
     if (angMods.length) {
