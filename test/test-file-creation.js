@@ -101,7 +101,7 @@ describe('Angular-RequireJS generator', function () {
               )
             ],
             [
-              path.join('test/spec', targetDirectory, name + '.js'),
+              path.join('test/spec', targetDirectory, name + 'Spec.js'),
               new RegExp(
                 'describe\\(\'' + _.classify(specType) + ': ' + specNameFn(name) + suffix + '\'',
                 'g'

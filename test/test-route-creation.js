@@ -74,7 +74,7 @@ describe('Angular-RequireJS generator route mechanism', function () {
       angular.run({}, function(e) {
         helpers.assertFile(expected);
         helpers.assertFileContent(
-          'app/scripts/main.js',
+          'app/scripts/app.js',
           new RegExp('when\\(\'/' + route + '\'')
         );
 
@@ -90,7 +90,7 @@ describe('Angular-RequireJS generator route mechanism', function () {
       angular.run({}, function() {
         helpers.assertFile(expected);
         helpers.assertFileContent(
-          'app/scripts/main.js',
+          'app/scripts/app.js',
           new RegExp('when\\(\'/' + uri + '\'')
         );
 

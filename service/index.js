@@ -23,9 +23,9 @@ Generator.prototype.createServiceFiles = function createServiceFiles() {
 // Re-write the main app module to account for our new dependency
 Generator.prototype.injectDependenciesToApp = function () {
   angularUtils.injectIntoFile(
-    this.env.options.appPath, 
-    'services/' + this.name.toLowerCase(), 
-    this.classedName + 'Service', 
+    this.env.options.appPath,
+    'services/' + this.name.toLowerCase(),
+    this.classedName + 'Service',
     this.scriptAppName + '.services.' + this.classedName
   );
 };
