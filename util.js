@@ -45,9 +45,9 @@ function injectIntoFile (appPath, moduleName, attachedComponentName, injectedMod
 
   rewriteFile(config);
 
-  // Check for the existence of a controllers module as an 
+  // Check for the existence of a controllers module as an
   // application dependency. If it doesn't exist, inject it
-  var app_js = fs.readFileSync('app/scripts/app.js', 'utf8');
+  var app_js = fs.readFileSync(path.join(appPath, 'scripts/app.js'), 'utf8');
   var regex_app_module = new RegExp(injectedModuleName);
 
   if (!regex_app_module.test(app_js)) {
