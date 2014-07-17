@@ -25,6 +25,7 @@ describe('Angular-RequireJS generator template mechanism', function () {
       }
 
       angular = helpers.createGenerator('angular-require:app', deps, [appName], {
+        'appPath': 'app',
         'skip-welcome-message': true,
         'skip-install': true,
         'skip-message': true
