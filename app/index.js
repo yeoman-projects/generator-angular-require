@@ -7,6 +7,7 @@ var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 var wiredep = require('wiredep');
 var chalk = require('chalk');
+var bowerRequireJS = require('bower-requirejs');
 
 var Generator = module.exports = function Generator(args, options) {
   yeoman.generators.Base.apply(this, arguments);
@@ -36,6 +37,7 @@ var Generator = module.exports = function Generator(args, options) {
         this.env.options.appPath = require(path.join(process.cwd(), 'bower.json')).appPath;
       } catch (e) {}
     }
+
     this.env.options.appPath = this.env.options.appPath || 'app';
     this.options.appPath = this.env.options.appPath;
   }
@@ -103,6 +105,14 @@ var Generator = module.exports = function Generator(args, options) {
         args: ['about']
       });
     }
+
+    // Wire up bower dependencies in RequireJS config
+    var bowerRequireJsOptions = {
+      config: this.appPath + '/scripts/main.js',
+      exclude: ['requirejs', 'json3', 'es5-shim']
+    };
+
+    bowerRequireJS(options, function (rjsConfigFromBower) { });
   });
 
   this.pkg = require('../package.json');
@@ -272,7 +282,6 @@ Generator.prototype.createIndexHtml = function createIndexHtml() {
 Generator.prototype.packageFiles = function packageFiles() {
   this.template('root/_bower.json', 'bower.json');
   this.template('root/_bowerrc', '.bowerrc');
-  this.template('root/gitignore', '.gitignore');
   this.template('root/_package.json', 'package.json');
   this.template('root/_Gruntfile.js', 'Gruntfile.js');
 
