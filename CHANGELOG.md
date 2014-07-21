@@ -1,3 +1,14 @@
+<a name="0.2.1"></a>
+### 0.2.1 (2014-07-21)
+
+
+#### Bug Fixes
+
+* **gen:**
+  * Corrected options object name to bower-requirejs ([ba40517c](https://github.com/aaronallport/generator-angular-require/commit/ba40517c9c43384a97205d6de184f02ab9107c25))
+  * Typo in main.js in generated project ([954371f4](https://github.com/aaronallport/generator-angular-require/commit/954371f40829fe63d7a42277c1f793e8abd4147c))
+  * Typo in generated Gruntfile ([cd7702ab](https://github.com/aaronallport/generator-angular-require/commit/cd7702ab8cb310c5cc10df360ca0a4db757c48f4))
+
 <a name="0.2.0"></a>
 ## 0.2.0 (2014-07-17)
 
