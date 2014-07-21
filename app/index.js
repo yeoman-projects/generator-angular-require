@@ -112,7 +112,7 @@ var Generator = module.exports = function Generator(args, options) {
       exclude: ['requirejs', 'json3', 'es5-shim']
     };
 
-    bowerRequireJS(options, function (rjsConfigFromBower) { });
+    bowerRequireJS(bowerRequireJsOptions, function (rjsConfigFromBower) { });
   });
 
   this.pkg = require('../package.json');
