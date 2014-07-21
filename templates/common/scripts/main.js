@@ -9,7 +9,7 @@ require.config({
     'angular-cookies': ['angular']<% } %><% if (sanitizeModule) { %>,
     'angular-sanitize': ['angular']<% } %><% if (resourceModule) { %>,
     'angular-resource': ['angular']<% } %><% if (animateModule) { %>,
-    'angular-animate': ['angular']<% } %>,<% if (touchModule) { %>,
+    'angular-animate': ['angular']<% } %><% if (touchModule) { %>,
     'angular-touch': ['angular']<% } %>,
     'angular-mocks': {
       deps:['angular'],
