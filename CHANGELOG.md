@@ -1,3 +1,13 @@
+<a name="0.2.3"></a>
+### 0.2.3 (2014-07-21)
+
+
+#### Bug Fixes
+
+* **gen:**
+  * Update dependencies of generated project ([01a9f5ce](https://github.com/aaronallport/generator-angular-require/commit/01a9f5ce9ab99302699ce8ff4a1f9db2598793ef))
+
+
 <a name="0.2.2"></a>
 ### 0.2.2 (2014-07-21)
 
