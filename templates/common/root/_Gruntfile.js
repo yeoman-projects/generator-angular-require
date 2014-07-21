@@ -25,7 +25,7 @@ module.exports = function (grunt) {
   grunt.initConfig({
 
     // Project settings
-    yeoman: appConfi
+    yeoman: appConfig,
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
