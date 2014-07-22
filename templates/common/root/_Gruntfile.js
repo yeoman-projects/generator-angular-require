@@ -464,6 +464,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('test', [
     'clean:server',
+    'replace:test',
     'concurrent:test',
     'autoprefixer',
     'connect:test',
