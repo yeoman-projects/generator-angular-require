@@ -1,3 +1,13 @@
+<a name="0.2.4"></a>
+### 0.2.4 (2014-07-22)
+
+
+#### Bug Fixes
+
+* **app:** Adding in replace task for test-main.js ([445cd829](https://github.com/aaronallport/generator-angular-require/commit/445cd829b70ff6e8edbdea92eee7cc912deb9d71))
+* **test:** typo in generated test-main.js ([7733b6ed](https://github.com/aaronallport/generator-angular-require/commit/7733b6ede4d14bee369c601fceb1ed836fae80b0))
+
+
 <a name="0.2.3"></a>
 ### 0.2.3 (2014-07-21)
 
