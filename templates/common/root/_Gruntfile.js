@@ -398,14 +398,14 @@ module.exports = function (grunt) {
     },
 
     // Settings for grunt-bower-requirejs
-    // bower: {
-    //   app: {
-    //     rjsConfig: '<%%= yeoman.app %>/scripts/main.js',
-    //     options: {
-    //       exclude: ['requirejs', 'json3', 'es5-shim']
-    //     }
-    //   }
-    // },
+    bower: {
+      app: {
+        rjsConfig: '<%%= yeoman.app %>/scripts/main.js',
+        options: {
+          exclude: ['requirejs', 'json3', 'es5-shim']
+        }
+      }
+    },
 
     replace: {
       test: {
@@ -474,7 +474,7 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'clean:dist',
     'wiredep',
-    // 'bower:app',
+    'bower:app',
     'replace:test',
     'useminPrepare',
     'concurrent:dist',
