@@ -297,7 +297,7 @@ Generator.prototype.populateRequireJsConfigFromBower = function populateRequireJ
   var bowerRequireJsOptions = {
     config: 'app/scripts/main.js',
     exclude: ['requirejs', 'json3', 'es5-shim'],
-    baseUrl: 'bower_components'
+    baseUrl: '../../bower_components'
   };
 
   // Call base generator engine method on bower.json to be able to populate the "paths" string
