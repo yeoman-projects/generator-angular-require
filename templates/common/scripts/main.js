@@ -1,8 +1,6 @@
 /*jshint unused: vars */
 require.config({
-  paths: {
-
-  },
+  paths: {},
   shim: {
     'angular' : {'exports' : 'angular'}<% if (routeModule) { %>,
     'angular-route': ['angular']<% } %><% if (cookiesModule) { %>,

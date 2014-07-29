@@ -7,7 +7,9 @@ var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 var wiredep = require('wiredep');
 var chalk = require('chalk');
-var bowerRequireJS = require('bower-requirejs');
+// Bower-RequireJS
+var bower = require('bower');
+var _ = require('lodash');
 
 var Generator = module.exports = function Generator(args, options) {
   yeoman.generators.Base.apply(this, arguments);
@@ -105,16 +107,6 @@ var Generator = module.exports = function Generator(args, options) {
         args: ['about']
       });
     }
-
-    // Wire up bower dependencies in RequireJS config
-    var bowerRequireJsOptions = {
-      config: this.appPath + '/scripts/main.js',
-      exclude: ['requirejs', 'json3', 'es5-shim']
-    };
-
-    bowerRequireJS(bowerRequireJsOptions, function (rjsConfigFromBower) {
-        console.log('Wiring up RequireJS dependencies using config file: ' + bowerRequireJsOptions.config + '\n');
-    });
   });
 
   this.pkg = require('../package.json');
@@ -282,15 +274,80 @@ Generator.prototype.createIndexHtml = function createIndexHtml() {
 };
 
 Generator.prototype.packageFiles = function packageFiles() {
-  this.template('root/_bower.json', 'bower.json');
   this.template('root/_bowerrc', '.bowerrc');
   this.template('root/_package.json', 'package.json');
   this.template('root/_Gruntfile.js', 'Gruntfile.js');
 
-  // RequireJS App config
-  this.template('../../templates/common/scripts/main.js', 'app/scripts/main.js');
   // RequireJS Test config
   this.template('../../templates/common/scripts/test-main.js', 'test/test-main.js');
+
+};
+
+// Populuate Require.json when bower has finished installing dependencies
+Generator.prototype.populateRequireJsConfigFromBower = function populateRequireJsConfigFromBower() {
+  var bowerJsonFileContents;
+  var mainJsFileContents;
+  var pathsString;
+  var bowerDeps;
+
+  // appPath reference for use inside fs calls
+  var appPath = this.appPath;
+
+  // Options object, kept in the format expected by bower-requirejs
+  var bowerRequireJsOptions = {
+    config: 'app/scripts/main.js',
+    exclude: ['requirejs', 'json3', 'es5-shim'],
+    baseUrl: 'bower_components'
+  };
+
+  // Call base generator engine method on bower.json to be able to populate the "paths" string
+  bowerJsonFileContents = this.read('../../templates/common/root/_bower.json', 'utf8');
+  bowerJsonFileContents = this.engine(bowerJsonFileContents, this);
+
+  // Call base generator engine method on main.js template to be able to manipulate templated contents
+  mainJsFileContents = this.read('../../templates/common/scripts/main.js', 'utf8');
+  mainJsFileContents = this.engine(mainJsFileContents, this);
+
+  // Write bower.json, calling the bower API when done
+  fs.writeFile('bower.json', bowerJsonFileContents, function(err) {
+    if (err) throw err;
+    // Call mkdir to explicitly create /scripts/ if it doesn't exist already
+    fs.mkdir(path.join(appPath + '/scripts/'));
+
+    // Get all bower dependencies
+    bower.commands.list().on('end', function (data) {
+      pathsString = 'paths: {\n';
+      bowerDeps = [];
+
+      // Push all dependencies to an array we'll filter shortly
+      _.forOwn(data.dependencies, function (pkg, name) {
+        // Populate an array
+        bowerDeps.push(name);
+      });
+
+      // Filter out dependencies based on bowerRequireJsOptions.exclude, and build
+      // up the paths string
+      for (var dep in bowerDeps) {
+        if (bowerRequireJsOptions.exclude.indexOf(bowerDeps[dep]) === -1) {
+          pathsString += '    \'' + bowerDeps[dep] + '\' : \'' + bowerRequireJsOptions.baseUrl +
+            '/' + bowerDeps[dep] + '/' + bowerDeps[dep] + '\',\n';
+        }
+      }
+
+      // Drop ',\n' from the end of the string
+      pathsString = pathsString.substring(0, pathsString.length - 2);
+      pathsString += '\n  }';
+
+      // Replace 'paths: {}' with pathsString in mainJsFileContents
+      mainJsFileContents = mainJsFileContents.replace(/paths: {}/, pathsString);
+
+      // Write main.js and alert the user
+      fs.writeFile(bowerRequireJsOptions.config, mainJsFileContents, function(err) {
+        if (err) throw err;
+          console.log(chalk.yellow(bowerRequireJsOptions.config + ' written\n'));
+      });
+    });
+  });
 };
 
 Generator.prototype.showGuidance = function showGuidance() {
