@@ -275,14 +275,20 @@ Generator.prototype.createIndexHtml = function createIndexHtml() {
 
 Generator.prototype.packageFiles = function packageFiles() {
   this.template('root/_bowerrc', '.bowerrc');
+  this.template('root/_bower.json', 'bower.json');
   this.template('root/_package.json', 'package.json');
   this.template('root/_Gruntfile.js', 'Gruntfile.js');
 
+  // RequireJS Test config
+  this.template('../../templates/common/scripts/main.js', path.join(this.appPath, 'scripts/main.js'));
   // RequireJS Test config
   this.template('../../templates/common/scripts/test-main.js', 'test/test-main.js');
 
 };
 
+// Commented out, but left in the code for now in-case there is enough drive to have this sorted out
+// in the generator rather than having grunt-bower-requirejs execute on every build/test run
+/*
 // Populuate Require.json when bower has finished installing dependencies
 Generator.prototype.populateRequireJsConfigFromBower = function populateRequireJsConfigFromBower() {
   var bowerJsonFileContents;
@@ -349,7 +355,7 @@ Generator.prototype.populateRequireJsConfigFromBower = function populateRequireJ
     });
   });
 };
-
+*/
 Generator.prototype.showGuidance = function showGuidance() {
   var guidance =
     '\nNow that everything is set up, you\'ll need to execute a build. ' +
