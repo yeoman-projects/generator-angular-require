@@ -1,3 +1,12 @@
+<a name="0.2.6"></a>
+### 0.2.6 (2014-07-30)
+
+
+#### Bug Fixes
+
+* **gen:** remove unneeded dependencies from index.js ([479b7de9](https://github.com/aaronallport/generator-angular-require/commit/479b7de929d14779cad72e68a9f4484143973ed7))
+
+
 <a name="0.2.5"></a>
 ### 0.2.5 (2014-07-30)
 
