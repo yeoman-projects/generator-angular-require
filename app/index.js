@@ -7,9 +7,6 @@ var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 var wiredep = require('wiredep');
 var chalk = require('chalk');
-// Bower-RequireJS
-var bower = require('bower');
-var _ = require('lodash');
 
 var Generator = module.exports = function Generator(args, options) {
   yeoman.generators.Base.apply(this, arguments);
