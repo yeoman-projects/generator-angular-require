@@ -1,3 +1,17 @@
+<a name="0.2.5"></a>
+### 0.2.5 (2014-07-30)
+
+
+#### Bug Fixes
+
+* **gen:**
+  * simply bower-requirejs deps wiring ([7ae49f40](https://github.com/aaronallport/generator-angular-require/commit/7ae49f40c2190aae1874d06d6bb87c4b0b49973a))
+  * Bower dependencies updated correctly on build run ([eaeeaebe](https://github.com/aaronallport/generator-angular-require/commit/eaeeaebe3ca7d214e5db20c9b48ac2b154189ecc))
+  * Update bower baseUrl for requirejs options ([09a966ab](https://github.com/aaronallport/generator-angular-require/commit/09a966abc326d01da486ff23964085b27c150083))
+  * RequireJS paths config from bower deps ([09ab677e](https://github.com/aaronallport/generator-angular-require/commit/09ab677e67f8fa43cbc109e393b83e33bcbf39d3), closes [#34](https://github.com/aaronallport/generator-angular-require/issues/34))
+  * Include requirejs as bower dependency ([f0c5e17b](https://github.com/aaronallport/generator-angular-require/commit/f0c5e17b13b451c3790c0db463dc34daa1a8e4c3))
+
+
 <a name="0.2.4"></a>
 ### 0.2.4 (2014-07-22)
 
