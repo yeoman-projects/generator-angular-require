@@ -214,7 +214,6 @@ module.exports = function (grunt) {
     filerev: {
       dist: {
         src: [
-          '<%%= yeoman.dist %>/scripts/{,*/}*.js',
           '<%%= yeoman.dist %>/styles/{,*/}*.css',
           '<%%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
           '<%%= yeoman.dist %>/styles/fonts/*'
@@ -313,9 +312,9 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '.tmp/concat/scripts',
-          src: '*.js',
-          dest: '.tmp/concat/scripts'
+          // cwd: '<%%= yeoman.app %>/scripts',
+          src: '<%%= yeoman.app %>/scripts/**/*.js',
+          dest: '.tmp'
         }]
       }
     },
@@ -431,7 +430,7 @@ module.exports = function (grunt) {
           preserveLicenseComments: false, // remove all comments
           removeCombined: true,
           baseUrl: '<%%= yeoman.app %>/scripts',
-          mainConfigFile: '<%%= yeoman.app %>/scripts/main.js',
+          mainConfigFile: '.tmp/<%%= yeoman.app %>/scripts/main.js',
           optimize: 'uglify2',
           uglify2: {
             mangle: false
