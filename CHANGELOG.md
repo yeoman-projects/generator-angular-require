@@ -1,3 +1,15 @@
+<a name="0.2.7"></a>
+### 0.2.7 (2014-07-31)
+
+
+#### Bug Fixes
+
+* **gen:** Run r.js on output from ngAnnotate ([dc379e5a](https://github.com/aaronallport/generator-angular-require/commit/dc379e5adc37321f7a86addb75501943521f413a))
+
+#### Re-factoring
+
+* **gen:** Replace ngmin with ngAnnotate ([080d48abbc](https://github.com/aaronallport/generator-angular-require/commit/080d48abbc0b2c672029817eb7a202209f70972a))
+
 <a name="0.2.6"></a>
 ### 0.2.6 (2014-07-30)
 
