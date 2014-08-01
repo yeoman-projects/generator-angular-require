@@ -108,6 +108,8 @@ var Generator = module.exports = function Generator(args, options) {
 
   this.pkg = require('../package.json');
   this.sourceRoot(path.join(__dirname, '../templates/common'));
+
+  this.config.save();
 };
 
 util.inherits(Generator, yeoman.generators.Base);
