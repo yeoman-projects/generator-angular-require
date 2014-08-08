@@ -5,7 +5,7 @@ var yeoman = require('yeoman-generator');
 var angularUtils = require('./util.js');
 var chalk = require('chalk');
 
-var ScriptBase = yeoman.generators.Base.extend({
+var ScriptBase = yeoman.generators.NamedBase.extend({
   constructor: function(name) {
     yeoman.generators.NamedBase.apply(this, arguments);
 

@@ -11,9 +11,7 @@ describe('Angular-RequireJS generator template mechanism', function () {
   beforeEach(function (done) {
     var deps = [
       '../../../app',
-      '../../../common',
       '../../../controller',
-      '../../../main',
       [
         helpers.createDummyGenerator(),
         'karma-require:app'

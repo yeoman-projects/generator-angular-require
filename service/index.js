@@ -8,26 +8,29 @@ var yeoman = require('yeoman-generator');
 var ServiceGenerator = ScriptBase.extend({
   constructor: function() {
     ScriptBase.apply(this, arguments);
-    util.inherits(Generator, ScriptBase);
   },
 
-  createServiceFiles: function() {
-    this.generateSourceAndTest(
-      'service/service',
-      'spec/service',
-      'services',
-      true	// Skip adding the script to the index.html file of the application
-    );
+  writing: {
+    createServiceFiles: function() {
+      this.generateSourceAndTest(
+        'service/service',
+        'spec/service',
+        'services',
+        true	// Skip adding the script to the index.html file of the application
+      );
+    }
   },
 
-  // Re-write the main app module to account for our new dependency
-  injectDependenciesToApp: function() {
-    angularUtils.injectIntoFile(
-      this.env.options.appPath,
-      'services/' + this.name.toLowerCase(),
-      this.classedName + 'Service',
-      this.scriptAppName + '.services.' + this.classedName
-    );
+  install: {
+    // Re-write the main app module to account for our new dependency
+    injectDependenciesToApp: function() {
+      angularUtils.injectIntoFile(
+        this.env.options.appPath,
+        'services/' + this.name.toLowerCase(),
+        this.classedName + 'Service',
+        this.scriptAppName + '.services.' + this.classedName
+      );
+    }
   }
 });
 

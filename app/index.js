@@ -238,8 +238,8 @@ var AngularRequireJSGenerator = yeoman.generators.Base.extend({
     this.installDependencies({ skipInstall: this.options['skip-install'] });
 
     // Invoke the creation of the default controller
-    this.invoke('angular-require:controller', {  args: ['main'] });
-    
+    this.invoke('angular-require:controller', { args: ['main'] });
+
     // If ngRoute is specified as an install option, then create the "About" route
     if (this.env.options.ngRoute) {
       this.invoke('angular-require:route', { args: ['about'] });

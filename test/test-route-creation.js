@@ -35,9 +35,7 @@ describe('Angular-RequireJS generator route mechanism', function () {
         'angular-require:app',
         [
           '../../app',
-          '../../common',
           '../../controller',
-          '../../main',
           '../../route',
           '../../view', [
             helpers.createDummyGenerator(),

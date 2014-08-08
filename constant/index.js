@@ -8,8 +8,6 @@ var yeoman = require('yeoman-generator');
 var ConstantGenerator = ScriptBase.extend({
   constructor: function(name) {
     ScriptBase.apply(this, arguments);
-
-    util.inherits(Generator, ScriptBase);
   },
 
   createServiceFiles: function() {

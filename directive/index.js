@@ -8,7 +8,6 @@ var yeoman = require('yeoman-generator');
 var DirectiveGenerator = ScriptBase.extend({
   constructor: function(name) {
     ScriptBase.apply(this, arguments);
-    util.inherits(Generator, ScriptBase);
   },
 
   createDirectiveFiles: function() {

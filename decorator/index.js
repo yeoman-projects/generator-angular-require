@@ -27,7 +27,7 @@ var DecoratorGenerator = ScriptBase.extend({
       this.options.appPath = this.env.options.appPath;
     }
 
-    util.inherits(Generator, ScriptBase);
+    util.inherits(DecoratorGenerator, ScriptBase);
   },
 
   askForOverwrite: function() {

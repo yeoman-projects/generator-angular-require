@@ -2,12 +2,11 @@
 var path = require('path');
 var util = require('util');
 var yeoman = require('yeoman-generator');
+var ScriptBase = require('../script-base.js');
 
 var ViewGenerator = ScriptBase.extend({
-  constructor: function() {
-    yeoman.generators.NamedBase.apply(this, arguments);
-
-    this.sourceRoot(path.join(__dirname, '../templates/common'));
+  constructor: function(name) {
+    ScriptBase.apply(this, arguments);
 
     if (typeof this.env.options.appPath === 'undefined') {
       this.env.options.appPath = this.options.appPath;
@@ -20,13 +19,11 @@ var ViewGenerator = ScriptBase.extend({
       this.env.options.appPath = this.env.options.appPath || 'app';
       this.options.appPath = this.env.options.appPath;
     }
-
-    util.inherits(Generator, yeoman.generators.NamedBase);
   },
 
   createViewFiles: function() {
     this.template(
-      'app/views/view.html',
+      '../common/app/views/view.html',
       path.join(
         this.env.options.appPath,
         'views',
@@ -34,6 +31,6 @@ var ViewGenerator = ScriptBase.extend({
       )
     );
   }
-};
+});
 
 module.exports = ViewGenerator;

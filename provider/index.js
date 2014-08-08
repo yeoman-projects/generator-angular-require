@@ -8,7 +8,6 @@ var yeoman = require('yeoman-generator');
 var ProviderGenerator = ScriptBase.extend({
   constructor: function() {
     ScriptBase.apply(this, arguments);
-    util.inherits(Generator, ScriptBase);
   },
 
   createServiceFiles: function() {
