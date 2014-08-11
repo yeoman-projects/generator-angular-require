@@ -154,7 +154,7 @@ var AngularRequireJSGenerator = yeoman.generators.Base.extend({
   },
 
   configuring: {
-    bower: function() {
+    bowerConfig: function() {
       this.template('root/_bowerrc', '.bowerrc');
       this.template('root/_bower.json', 'bower.json');
     },
