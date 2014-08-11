@@ -7,7 +7,7 @@ var angularUtils = require('../util.js');
 var yeoman = require('yeoman-generator');
 
 var RouteGenerator = ScriptBase.extend({
-  constructor: function(name) {
+  constructor: function() {
     ScriptBase.apply(this, arguments);
 
     var bower = require(path.join(process.cwd(), 'bower.json'));
@@ -22,9 +22,6 @@ var RouteGenerator = ScriptBase.extend({
     ) {
       this.foundWhenForRoute = true;
     }
-
-    this.hookFor('angular-require:controller');
-    this.hookFor('angular-require:view');
   },
 
   writing: {
@@ -60,6 +57,11 @@ var RouteGenerator = ScriptBase.extend({
 
       angularUtils.rewriteFile(config);
     }
+  },
+
+  install: function() {
+    this.invoke('angular-require:controller', { args: this.name });
+    this.invoke('angular-require:view', { args: this.name });
   }
 });
 
