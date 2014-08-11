@@ -26,7 +26,7 @@ describe('Angular-RequireJS generator route mechanism', function () {
   };
 
   beforeEach(function (done) {
-    helpers.testDirectory(path.join(__dirname, 'tmp'), function (err) {
+    helpers.testDirectory(path.join(__dirname, './tmp'), function (err) {
       if (err) {
         done(err);
       }

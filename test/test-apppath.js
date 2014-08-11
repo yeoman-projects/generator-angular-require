@@ -38,7 +38,7 @@ describe('Angular-RequireJS generator appPath option', function () {
   };
 
   beforeEach(function (done) {
-    helpers.testDirectory(path.join(__dirname, 'tmp'), function (err) {
+    helpers.testDirectory(path.join(__dirname, './tmp'), function (err) {
       if (err) {
         done(err);
       }

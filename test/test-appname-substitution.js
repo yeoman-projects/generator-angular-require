@@ -17,7 +17,10 @@ describe('Angular-RequireJS generator template mechanism', function () {
         'karma-require:app'
       ]
     ];
-    helpers.testDirectory(path.join(__dirname, 'tmp', appName), function (err) {
+    // Ugly hack to effectively "force" the test working directory to be cleared down
+    helpers.testDirectory(path.join(__dirname, './tmp'), function() {});
+    
+    helpers.testDirectory(path.join(__dirname, './tmp', appName), function (err) {
       if (err) {
         done(err);
       }
