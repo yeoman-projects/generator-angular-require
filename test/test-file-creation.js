@@ -39,7 +39,7 @@ describe('Angular-RequireJS generator', function () {
   };
 
   // Ugly hack to effectively "force" the test working directory to be cleared down
-  helpers.testDirectory(path.join(__dirname, 'tmp'), function() {});
+  // helpers.testDirectory(path.join(__dirname, 'tmp'), function() {});
 
   beforeEach(function (done) {
     helpers.testDirectory(path.join(__dirname, 'tmp'), function (err) {
