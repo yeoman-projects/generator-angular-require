@@ -18,9 +18,9 @@ describe('Angular-RequireJS generator template mechanism', function () {
       ]
     ];
     // Ugly hack to effectively "force" the test working directory to be cleared down
-    helpers.testDirectory(path.join(__dirname, './tmp'), function() {});
-    
-    helpers.testDirectory(path.join(__dirname, './tmp', appName), function (err) {
+    helpers.testDirectory(path.join(__dirname, 'tmp'), function() {});
+
+    helpers.testDirectory(path.join(__dirname, 'tmp', appName), function (err) {
       if (err) {
         done(err);
       }
