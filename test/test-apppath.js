@@ -50,7 +50,7 @@ describe('Angular-RequireJS generator appPath option', function () {
         'angular-require:app',
         [
           '../../app',
-          '../../controller',
+          //'../../controller',
           [
             helpers.createDummyGenerator(),
             'karma-require:app'

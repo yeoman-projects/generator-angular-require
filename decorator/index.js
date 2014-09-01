@@ -98,4 +98,4 @@ var DecoratorGenerator = ScriptBase.extend({
   }
 });
 
-module.export = DecoratorGenerator;
+module.exports = DecoratorGenerator;

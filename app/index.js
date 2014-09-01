@@ -21,6 +21,7 @@ var AngularRequireJSGenerator = yeoman.generators.Base.extend({
 
     this.option('appPath', {
       desc: 'path/to/app is now accepted to choose where to write the files',
+      banner: 'path/to/app is now accepted to choose where to write the files',
       type: 'String',
       defaults: 'app',
       required: 'false'
@@ -213,7 +214,7 @@ var AngularRequireJSGenerator = yeoman.generators.Base.extend({
       this.sourceRoot(path.join(__dirname, '../templates/common'));
       var appPath = this.options.appPath;
       var copy = function (dest) {
-        this.copy(path.join('app', dest), path.join(appPath, dest));
+        this.copy(path.join('app', dest), path.join(this.appPath, dest));
       }.bind(this);
 
       copy('.buildignore');
@@ -222,7 +223,7 @@ var AngularRequireJSGenerator = yeoman.generators.Base.extend({
       copy('favicon.ico');
       copy('robots.txt');
       copy('views/main.html');
-      this.directory(path.join('app', 'images'), path.join(appPath, 'images'));
+      this.directory(path.join('app', 'images'), path.join(this.appPath, 'images'));
     },
 
     appFile: function() {
