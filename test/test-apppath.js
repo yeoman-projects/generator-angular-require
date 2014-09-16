@@ -1,13 +1,17 @@
 /*global describe, before, it, beforeEach */
 'use strict';
 
-var path = require('path');
-var helpers = require('yeoman-generator').test;
-var _ = require('underscore.string');
+var path    = require('path');
+var yeoman  = require('yeoman-generator');
+var helpers = yeoman.test;
+var assert  = yeoman.assert;
+var fs      = require('fs');
+var test    = require('./helper');
+var _       = require('underscore.string');
 
 describe('Angular-RequireJS generator appPath option', function () {
-  var angular;
   var appPath = 'customAppPath';
+  var appName = 'App';
   var expected = [
     appPath + '/.htaccess',
     appPath + '/404.html',
@@ -37,126 +41,167 @@ describe('Angular-RequireJS generator appPath option', function () {
     'skip-message': true
   };
 
-  // Ugly hack to effectively "force" the test working directory to be cleared down
-  // helpers.testDirectory(path.join(__dirname, 'tmp'), function() {});
+  var deps = [
+    '../../app',
+    '../../controller',
+    '../../route',
+    '../../view', [
+      helpers.createDummyGenerator(),
+      'karma-require:app'
+    ]
+  ];
 
   beforeEach(function (done) {
-    helpers.testDirectory(path.join(__dirname, 'tmp'), function (err) {
-      if (err) {
-        done(err);
-      }
+    this.angularRequire = {};
 
-      angular = helpers.createGenerator(
-        'angular-require:app',
+    this.angularRequire.app = helpers.run(path.join(__dirname, '../app'))
+      .inDir(path.join(__dirname, 'tmp'), function () {
+        var out = [
+          '{',
+          '  "generator-angular-require": {',
+          '    "appPath": "' + appPath + '",',
+          '    "appName": "' + appName + '"',
+          '  }',
+          '}'
+        ];
+        fs.writeFileSync('.yo-rc.json', out.join('\n'));
+      })
+      .withArguments([appName])
+      .withOptions(genOptions)
+      .withPrompt(mockPrompts)
+      .withGenerators(deps);
+
+    done();
+  });
+
+  describe('App files', function () {
+    it('should generate dotfiles for apppath', function (done) {
+      this.angularRequire.app
+        .on('end', function() {
+          assert.file(expected);
+          done();
+        });
+    });
+
+    it('creates expected JS files', function (done) {
+      this.angularRequire.app
+        .on('end', function() {
+          assert.file([].concat(expected, [
+            appPath + '/scripts/app.js',
+            appPath + '/scripts/controllers/main.js',
+            'test/spec/controllers/mainSpec.js'
+          ]));
+          done();
+        });
+    });
+  });
+
+  describe('Service Subgenerators', function () {
+    var subGeneratorTest = function(type, name, targetDirectory, suffix, scriptNameFn, done) {
+      test.createSubGenerator(
+        type,
+        [name],
         [
-          '../../app',
-          //'../../controller',
+          '../../' + type,
           [
             helpers.createDummyGenerator(),
             'karma-require:app'
           ]
         ],
-        false,
-        genOptions
-      );
-      helpers.mockPrompt(angular, mockPrompts);
+        [],
+        function() {
+          assert.fileContent(
+            path.join(appPath + '/scripts', targetDirectory, name + '.js'),
+            new RegExp(type + '\\(\'' + scriptNameFn(name) + suffix + '\'', 'g')
+          );
 
-      done();
-    });
-  });
-
-  describe('App files', function () {
-    it('should generate dotfiles for apppath', function (done) {
-      angular.run({}, function () {
-        helpers.assertFile(expected);
-        done();
-      });
-    });
-
-    it('creates expected JS files', function (done) {
-      angular.run({}, function() {
-        helpers.assertFile([].concat(expected, [
-          appPath + '/scripts/app.js',
-          appPath + '/scripts/controllers/main.js',
-          'test/spec/controllers/mainSpec.js'
-        ]));
-        done();
-      });
-    });
-  });
-
-  describe('Service Subgenerators', function () {
-    var generatorTest = function (generatorType, specType, targetDirectory, scriptNameFn, specNameFn, suffix, done) {
-      var angularGenerator;
-      var name = 'foo';
-      var deps = [path.join('../..', generatorType)];
-      angularGenerator = helpers.createGenerator('angular-require:' + generatorType, deps, [name], genOptions);
-
-      angular.run([], function () {
-        angularGenerator.run([], function () {
-          helpers.assertFileContent([
-            [
-              path.join(appPath + '/scripts', targetDirectory, name + '.js'),
-              new RegExp(
-                generatorType + '\\(\'' + scriptNameFn(name) + suffix + '\'',
-                'g'
-              )
-            ]
-          ]);
           done();
-        });
-      });
+        }
+      );
     };
 
     it('should generate a new controller', function (done) {
-      generatorTest('controller', 'controller', 'controllers', _.classify, _.classify, 'Ctrl', done);
+      this.angularRequire.app
+        .on('end', function () {
+          subGeneratorTest('controller', 'foo', 'controllers', 'Ctrl', _.classify, done);
+        });
     });
 
     it('should generate a new directive', function (done) {
-      generatorTest('directive', 'directive', 'directives', _.camelize, _.camelize, '', done);
+      this.angularRequire.app
+        .on('end', function () {
+          subGeneratorTest('directive', 'foo', 'directives', '', _.camelize, done);
+        });
     });
 
     it('should generate a new filter', function (done) {
-      generatorTest('filter', 'filter', 'filters', _.camelize, _.camelize, '', done);
+      this.angularRequire.app
+        .on('end', function () {
+          subGeneratorTest('filter', 'foo', 'filters', '', _.camelize, done);
+        });
     });
 
     ['constant', 'factory', 'provider', 'value'].forEach(function(t) {
       it('should generate a new ' + t, function (done) {
-        generatorTest(t, 'service', 'services', _.camelize, _.camelize, '', done)
+        this.angularRequire.app
+          .on('end', function () {
+            subGeneratorTest(t, 'foo', 'services', '', _.camelize, done);
+          });
       });
     });
 
     it('should generate a new service', function (done) {
-      generatorTest('service', 'service', 'services', _.capitalize, _.capitalize, '', done)
+      this.angularRequire.app
+        .on('end', function () {
+          subGeneratorTest('service', 'foo', 'services', '', _.capitalize, done);
+        });
     });
   });
 
   describe('View', function () {
     it('should generate a new view', function (done) {
-      var angularView;
-      var deps = ['../../view'];
-      angularView = helpers.createGenerator('angular-require:view', deps, ['foo'], genOptions);
+      this.angularRequire.app
+        .on('end', function () {
+          test.createSubGenerator(
+            'view',
+            ['foo'],
+            [
+              '../../view',
+              [
+                helpers.createDummyGenerator(),
+                'karma-require:app'
+              ]
+            ],
+            [],
+            function() {
+              assert.file([appPath + '/views/foo.html']);
 
-      helpers.mockPrompt(angular, mockPrompts);
-      angular.run([], function () {
-        angularView.run([], function () {
-          helpers.assertFile([appPath + '/views/foo.html']);
-          done();
-        });
+              done();
+            }
+          );
       });
     });
 
     it('should generate a new view in subdirectories', function (done) {
-      var angularView;
-      var deps = ['../../view'];
-      angularView = helpers.createGenerator('angular-require:view', deps, ['foo/bar'], genOptions);
+      this.angularRequire.app
+        .on('end', function () {
+          test.createSubGenerator(
+            'view',
+            ['foo/bar'],
+            [
+              '../../view',
+              [
+                helpers.createDummyGenerator(),
+                'karma-require:app'
+              ]
+            ],
+            [],
+            function() {
+              assert.file([appPath + '/views/foo/bar.html']);
 
-      helpers.mockPrompt(angular, mockPrompts);
-      angular.run([], function () {
-        angularView.run([], function () {
-          helpers.assertFile([appPath + '/views/foo/bar.html']);
-          done();
-        });
+              done();
+            }
+          );
       });
     });
   });
