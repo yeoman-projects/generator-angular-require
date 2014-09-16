@@ -1,23 +1,30 @@
 /*global describe, before, it, beforeEach */
 'use strict';
 
-var path = require('path');
-var helpers = require('yeoman-generator').test;
+var path    = require('path');
+var yeoman  = require('yeoman-generator');
+var helpers = yeoman.test;
+var assert  = yeoman.assert;
+var fs      = require('fs');
+var test    = require('./helper.js');
 
 describe('Angular-RequireJS generator route mechanism', function () {
-  var angular;
   var route = 'simpleroute';
+  this.angularRequire = {};
+
   var expected = [
     'app/scripts/controllers/' + route + '.js',
     'test/spec/controllers/' + route + 'Spec.js',
     'app/views/' + route + '.html'
   ];
+
   var genOptions = {
     'appPath': 'app',
     'skip-install': true,
     'skip-welcome-message': true,
     'skip-message': true
   };
+
   var mockPrompts = {
     compass: true,
     bootstrap: true,
@@ -25,77 +32,86 @@ describe('Angular-RequireJS generator route mechanism', function () {
     modules: ['routeModule']
   };
 
+  var deps = [
+    '../../app',
+    '../../controller',
+    '../../route',
+    '../../view', [
+      helpers.createDummyGenerator(),
+      'karma-require:app'
+    ]
+  ];
+
   beforeEach(function (done) {
-    helpers.testDirectory(path.join(__dirname, 'tmp'), function (err) {
-      if (err) {
-        done(err);
-      }
+    this.angularRequire = {};
 
-      angular = helpers.createGenerator(
-        'angular-require:app',
-        [
-          '../../app',
-          '../../common',
-          '../../controller',
-          '../../main',
-          '../../route',
-          '../../view', [
-            helpers.createDummyGenerator(),
-            'karma-require:app'
-          ]
-        ],
-        false,
-        genOptions
-      );
+    this.angularRequire.app = helpers.run(path.join(__dirname, '../app'))
+      .inDir(path.join(__dirname, 'tmp'), function () {
+        var out = [
+          '{',
+          '  "generator-angular-require": {',
+          '    "appPath": "app",',
+          '    "appName": "App"',
+          '  }',
+          '}'
+        ];
+        fs.writeFileSync('.yo-rc.json', out.join('\n'));
+      })
+      .withArguments(['App'])
+      .withOptions(genOptions)
+      .withPrompt(mockPrompts)
+      .withGenerators(deps);
 
-      helpers.mockPrompt(angular, mockPrompts);
-
-      angular.run({}, function () {
-        angular = helpers.createGenerator(
-          'angular-require:route',
-          [
-            '../../controller',
-            '../../route',
-            '../../view'
-          ],
-          [route],
-          genOptions
-        );
-
-        helpers.mockPrompt(angular, mockPrompts);
-
-        done();
-      });
-    });
+    done();
   });
 
   describe('create routes', function () {
-    it('should generate default route items', function(done){
-      angular.run({}, function(e) {
-        helpers.assertFile(expected);
-        helpers.assertFileContent(
-          'app/scripts/app.js',
-          new RegExp('when\\(\'/' + route + '\'')
-        );
+    it('should generate default route items', function(done) {
+      this.angularRequire.app
+        .on('end', function () {
+          test.createSubGenerator(
+            'route',
+            [route],
+            deps,
+            genOptions,
+            function() {
+              assert.file(expected);
 
-        done();
-      });
+              assert.fileContent(
+                'app/scripts/app.js',
+                new RegExp('when\\(\'/' + route + '\'')
+              );
+
+              done();
+            }
+          );
+        });
     });
 
     // Test with URI specified explicitly
-    it('should generate route items with the route uri given', function(done){
+    it('should generate route items with the route uri given', function(done) {
       var uri = 'segment1/segment2/:parameter';
+      genOptions["uri"] = uri;
 
-      angular.options.uri = uri;
-      angular.run({}, function() {
-        helpers.assertFile(expected);
-        helpers.assertFileContent(
-          'app/scripts/app.js',
-          new RegExp('when\\(\'/' + uri + '\'')
-        );
+      this.angularRequire.app
+        .on('end', function () {
+          test.createSubGenerator(
+            'route',
+            [route],
+            deps,
+            genOptions,
+            function() {
+              assert.file(expected);
 
-        done();
-      });
+              assert.fileContent(
+                'app/scripts/app.js',
+                new RegExp('when\\(\'/' + uri + '\'')
+              );
+
+              done();
+            }
+          );
+        });
     });
   });
 });

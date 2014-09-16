@@ -2,14 +2,6 @@
 var path = require('path');
 var fs = require('fs');
 
-
-module.exports = {
-  rewrite: rewrite,
-  rewriteFile: rewriteFile,
-  appName: appName,
-  injectIntoFile: injectIntoFile
-};
-
 function rewriteFile (args) {
   args.path = args.path || process.cwd();
   var fullPath = path.join(args.path, args.file);
@@ -121,3 +113,10 @@ function appName (self) {
   }
   return suffix ? self._.classify(suffix) : '';
 }
+
+module.exports = {
+  rewrite: rewrite,
+  rewriteFile: rewriteFile,
+  appName: appName,
+  injectIntoFile: injectIntoFile
+};

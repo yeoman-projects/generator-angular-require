@@ -42,7 +42,7 @@
     "test": "mocha"
   },
   "dependencies": {
-    "yeoman-generator": "~0.16.0",
+    "yeoman-generator": "~0.17.0",
     "bower-requirejs": "~0.11.0",
     "yosay": "^0.2.0",
     "chalk": "^0.4.0",
