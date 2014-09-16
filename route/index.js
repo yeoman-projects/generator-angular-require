@@ -43,7 +43,7 @@ var RouteGenerator = ScriptBase.extend({
 
       var config = {
         file: path.join(
-          this.env.options.appPath,
+          this.config.get('appPath'),
           'scripts/app.js'),
         needle: '.otherwise',
         splicable: [
@@ -56,12 +56,15 @@ var RouteGenerator = ScriptBase.extend({
       config.splicable.push("})");
 
       angularUtils.rewriteFile(config);
-    }
-  },
 
-  install: function() {
-    this.invoke('angular-require:controller', { args: this.name });
-    this.invoke('angular-require:view', { args: this.name });
+      this.composeWith('controller', { arguments: [this.name] }, {
+          local: require.resolve('../controller/index.js')
+      });
+
+      this.composeWith('view', { arguments: [this.name.toLowerCase()] }, {
+          local: require.resolve('../view/index.js')
+      });
+    }
   }
 });
 

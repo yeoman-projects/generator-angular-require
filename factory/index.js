@@ -22,7 +22,7 @@ var FactoryGenerator = ScriptBase.extend({
   // Re-write the main app module to account for our new dependency
   injectDependenciesToApp: function() {
     angularUtils.injectIntoFile(
-      this.env.options.appPath,
+      this.config.get('appPath'),
       'services/' + this.name.toLowerCase(),
       this.classedName + 'Factory',
       this.scriptAppName + '.services.' + this.classedName

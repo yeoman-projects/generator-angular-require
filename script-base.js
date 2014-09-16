@@ -51,7 +51,7 @@ var ScriptBase = yeoman.generators.NamedBase.extend({
   appTemplate: function(src, dest) {
     yeoman.generators.Base.prototype.template.apply(this, [
       src + this.scriptSuffix,
-      path.join(this.env.options.appPath, dest.toLowerCase()) + this.scriptSuffix
+      path.join(this.config.get('appPath'), dest.toLowerCase()) + this.scriptSuffix
     ]);
   },
 
@@ -65,7 +65,7 @@ var ScriptBase = yeoman.generators.NamedBase.extend({
   htmlTemplate: function(src, dest) {
     yeoman.generators.Base.prototype.template.apply(this, [
       src,
-      path.join(this.env.options.appPath, dest.toLowerCase())
+      path.join(this.config.get('appPath'), dest.toLowerCase())
     ]);
   },
 

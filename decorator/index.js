@@ -90,7 +90,7 @@ var DecoratorGenerator = ScriptBase.extend({
   // Re-write the main app module to account for our new dependency
   injectDependenciesToApp: function () {
     angularUtils.injectIntoFile(
-      this.env.options.appPath,
+      this.config.get('appPath'),
       'decorators/' + this.name.toLowerCase() + "Decorator",
       this.classedName + 'Decorator',
       this.scriptAppName + '.decorators.' + this.classedName

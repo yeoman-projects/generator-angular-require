@@ -22,7 +22,7 @@ var DirectiveGenerator = ScriptBase.extend({
   // Re-write the main app module to account for our new dependency
   injectDependenciesToApp: function() {
     angularUtils.injectIntoFile(
-      this.env.options.appPath,
+      this.config.get('appPath'),
       'directives/' + this.name.toLowerCase(),
       this.classedName + 'Directive',
       this.scriptAppName + '.directives.' + this.classedName
