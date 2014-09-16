@@ -239,11 +239,15 @@ var AngularRequireJSGenerator = yeoman.generators.Base.extend({
     this.installDependencies({ skipInstall: this.options['skip-install'] });
 
     // Invoke the creation of the default controller
-    this.invoke('angular-require:controller', { args: ['main'] });
+    this.composeWith('controller', { arguments: ['main'] }, {
+        local: require.resolve('../controller/index.js')
+    });
 
     // If ngRoute is specified as an install option, then create the "About" route
     if (this.env.options.ngRoute) {
-      this.invoke('angular-require:route', { args: ['about'] });
+      this.composeWith('route', { arguments: ['about'] }, {
+          local: require.resolve('../route/index.js')
+      });
     }
 
     if (this.resourceModule) { enabledComponents.push('angular-resource/angular-resource.js'); }
@@ -253,7 +257,7 @@ var AngularRequireJSGenerator = yeoman.generators.Base.extend({
     if (this.animateModule) { enabledComponents.push('angular-animate/angular-animate.js'); }
     if (this.touchModule) { enabledComponents.push('angular-touch/angular-touch.js'); }
 
-    this.invoke('karma-require:app', {
+    this.composeWith('karma-require', {
       options: {
         travis: true,
         'skip-install': this.options['skip-install'],
