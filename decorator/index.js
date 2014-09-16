@@ -15,18 +15,6 @@ var DecoratorGenerator = ScriptBase.extend({
     ScriptBase.apply(this, arguments);
     this.fileName = this.name;
 
-    if (typeof this.env.options.appPath === 'undefined') {
-      this.env.options.appPath = this.options.appPath;
-
-      if (!this.env.options.appPath) {
-        try {
-          this.env.options.appPath = require(path.join(process.cwd(), 'bower.json')).appPath;
-        } catch (e) {}
-      }
-      this.env.options.appPath = this.env.options.appPath || 'app';
-      this.options.appPath = this.env.options.appPath;
-    }
-
     util.inherits(DecoratorGenerator, ScriptBase);
   },
 

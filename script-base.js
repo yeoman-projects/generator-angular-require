@@ -26,7 +26,7 @@ var ScriptBase = yeoman.generators.NamedBase.extend({
 
       if (!this.env.options.appPath) {
         try {
-          this.env.options.appPath = require(path.join(process.cwd(), 'bower.json')).appPath;
+          this.env.options.appPath = this.config.get('appPath');
         } catch (e) {}
       }
       this.env.options.appPath = this.env.options.appPath || 'app';

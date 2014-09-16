@@ -12,7 +12,7 @@ var RouteGenerator = ScriptBase.extend({
 
     var bower = require(path.join(process.cwd(), 'bower.json'));
     var match = require('fs').readFileSync(
-      path.join(this.env.options.appPath, 'scripts/app.js'), 'utf-8'
+      path.join(this.config.get('appPath'), 'scripts/app.js'), 'utf-8'
     ).match(/\.when/);
 
     if (
