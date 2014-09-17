@@ -339,10 +339,19 @@ module.exports = function (grunt) {
             '.htaccess',
             '*.html',
             'views/{,*/}*.html',
-            'bower_components/**/*',
             'images/{,*/}*.{webp}',
             'fonts/*'
           ]
+        }, {
+          expand: true,
+          cwd: '.',
+          dest: '.tmp',
+          src: ['bower_components/**/*']
+        }, {
+          expand: true,
+          cwd: '.',
+          dest: '<%%= yeoman.dist %>',
+          src: ['bower_components/requirejs/*']
         }, {
           expand: true,
           cwd: '.tmp/images',
@@ -429,7 +438,7 @@ module.exports = function (grunt) {
           }],
           preserveLicenseComments: false, // remove all comments
           removeCombined: true,
-          baseUrl: '<%%= yeoman.app %>/scripts',
+          baseUrl: '.tmp/<%%= yeoman.app %>/scripts',
           mainConfigFile: '.tmp/<%%= yeoman.app %>/scripts/main.js',
           optimize: 'uglify2',
           uglify2: {
