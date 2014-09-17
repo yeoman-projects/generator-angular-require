@@ -1,3 +1,22 @@
+<a name="0.3.0"></a>
+## 0.3.0 (2014-09-17)
+
+
+#### Bug Fixes
+
+* **gen:**
+  * Resolved requires and bower reps locations ([10b5a26f](https://github.com/aaronallport/generator-angular-require/commit/10b5a26fde2ef457002b0b815eb799ed219dd76b), closes [#38](https://github.com/aaronallport/generator-angular-require/issues/38))
+  * wiredep is looking in the wrong directory for the bower.json file ([f74b8762](https://github.com/aaronallport/generator-angular-require/commit/f74b8762cb8f4de685ce8b8871029b2d3d99c4c8), closes [#42](https://github.com/aaronallport/generator-angular-require/issues/42))
+* **test:** updated test directory ([c2b2b94a](https://github.com/aaronallport/generator-angular-require/commit/c2b2b94ad7e5c5195559ffa09e3e61b43341a38f))
+
+#### Features
+
+* **gen:** Generators should generate a .yo-rc.json file ([53cbe025](https://github.com/aaronallport/generator-angular-require/commit/53cbe0258a25eac9c8b31ae2cc9a2abed80ea3a8))
+
+#### Re-factoring
+
+* **gen:** Generator cleanup ([f5740466](https://github.com/aaronallport/generator-angular-require/commit/f57404662e3757ca7ac031285efd32d8287161ba))
+
 <a name="0.2.7"></a>
 ### 0.2.7 (2014-07-31)
 
