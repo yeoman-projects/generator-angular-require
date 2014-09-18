@@ -1,3 +1,16 @@
+<a name="0.3.1"></a>
+### 0.3.1 (2014-09-18)
+
+
+#### Bug Fixes
+
+* **build:** no need to ngAnnotate oldieshim ([d9e5035f](https://github.com/aaronallport/generator-angular-require/commit/d9e5035f0e2377f4f2cc652a65c00ab448e4976e))
+* **deps:** use latest 1.2.x ng ([58cb74d0](https://github.com/aaronallport/generator-angular-require/commit/58cb74d03c514e3af8f81803cb1b6afc5a51453d))
+* **gen:**
+  * avoid json3 being injected twice ([5f31d3c9](https://github.com/aaronallport/generator-angular-require/commit/5f31d3c9c65f7446dc8644f044cebf0cda6074f9))
+  * wiredep - remove cwd property ([1fa366a4](https://github.com/aaronallport/generator-angular-require/commit/1fa366a4a7c5ae8200a1f0ebd54545c30adcb4d7))
+
+
 <a name="0.3.0"></a>
 ## 0.3.0 (2014-09-17)
 
