@@ -1,6 +1,6 @@
 # AngularJS-RequireJS generator
 
-[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) [![Build Status](https://travis-ci.org/aaronallport/generator-angular-require.svg?branch=master)](https://travis-ci.org/aaronallport/generator-angular-require) [![Dependency status](https://david-dm.org/aaronallport/generator-angular-require/status.png)](https://david-dm.org/pimterry/grunt-coveralls#info=dependencies&view=table) [![Dev Dependency Status](https://david-dm.org/aaronallport/generator-angular-require/dev-status.png)](https://david-dm.org/pimterry/grunt-coveralls#info=devDependencies&view=table)
+[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) [![Build Status](https://travis-ci.org/aaronallport/generator-angular-require.svg?branch=master)](https://travis-ci.org/aaronallport/generator-angular-require) [![Dependency status](https://david-dm.org/aaronallport/generator-angular-require/status.png)](https://david-dm.org/aaronallport/generator-angular-require#info=dependencies&view=table) [![Dev Dependency Status](https://david-dm.org/aaronallport/generator-angular-require/dev-status.png)](https://david-dm.org/aaronallport/generator-angular-require#info=devDependencies&view=table)
 
 > Yeoman generator for AngularJS using RequireJS - lets you quickly set up a project with sensible defaults and best practices.
 
