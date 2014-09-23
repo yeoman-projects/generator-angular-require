@@ -1,3 +1,12 @@
+<a name="0.3.2"></a>
+### 0.3.2 (2014-09-23)
+
+
+#### Features
+
+* **deps:** updated dependencies ([e4ec7120](https://github.com/aaronallport/generator-angular-require/commit/e4ec7120153f868f924284cd298c373797f6393d))
+
+
 <a name="0.3.1"></a>
 ### 0.3.1 (2014-09-18)
 
