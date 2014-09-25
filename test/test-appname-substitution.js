@@ -41,7 +41,7 @@ describe('Angular-RequireJS generator template mechanism', function () {
         'skip-install': true,
         'skip-message': true
       })
-      .withPrompt({
+      .withPrompts({
         compass: true,
         bootstrap: true,
         compassBootstrap: true,

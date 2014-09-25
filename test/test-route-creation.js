@@ -59,7 +59,7 @@ describe('Angular-RequireJS generator route mechanism', function () {
       })
       .withArguments(['App'])
       .withOptions(genOptions)
-      .withPrompt(mockPrompts)
+      .withPrompts(mockPrompts)
       .withGenerators(deps);
 
     done();

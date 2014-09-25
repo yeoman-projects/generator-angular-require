@@ -70,7 +70,7 @@ describe('Angular-RequireJS generator appPath option', function () {
       })
       .withArguments([appName])
       .withOptions(genOptions)
-      .withPrompt(mockPrompts)
+      .withPrompts(mockPrompts)
       .withGenerators(deps);
 
     done();
