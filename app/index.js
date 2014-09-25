@@ -271,18 +271,20 @@ var AngularRequireJSGenerator = yeoman.generators.Base.extend({
 
   end: {
     showGuidance: function() {
-      console.log(
-        '\nNow that everything is set up, you\'ll need to execute a build. ' +
-        '\nThis is done by running' +
-        '\n  grunt build' +
-        '\n' +
-        '\nWork with your files by using' +
-        '\n  grunt serve' +
-        '\n' +
-        '\nThis sets a watch on your files and also opens your project in ' +
-        '\na web browser using live-reload, so that any changes you make are ' +
-        '\ninstantly visible.'
-      );
+      if (!this.options['skip-message']) {
+        console.log(
+          '\nNow that everything is set up, you\'ll need to execute a build. ' +
+          '\nThis is done by running' +
+          '\n  grunt build' +
+          '\n' +
+          '\nWork with your files by using' +
+          '\n  grunt serve' +
+          '\n' +
+          '\nThis sets a watch on your files and also opens your project in ' +
+          '\na web browser using live-reload, so that any changes you make are ' +
+          '\ninstantly visible.'
+        );
+      }
     },
 
     saveConfig: function() {
