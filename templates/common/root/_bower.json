@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "dependencies": {
     "angular": "^<%= ngVer %>"<% if (animateModule) { %>,
-    "angular-animate": "^<%= ngVer %>"<% } %><% if (cookiesModule) { %>,
-    "angular-cookies": "^<%= ngVer %>"<% } %><% if (resourceModule) { %>,
+    "angular-animate": "^<%= ngVer %>"<% } %><% if (ariaModule) { %>,
+    "angular-aria": "^<%= ngVer %>"<% } %><% if (cookiesModule) { %>,
+    "angular-cookies": "^<%= ngVer %>"<% } %><% if (messagesModule) { %>,
+    "angular-messages": "^<%= ngVer %>"<% } %><% if (resourceModule) { %>,
     "angular-resource": "^<%= ngVer %>"<% } %><% if (routeModule) { %>,
     "angular-route": "^<%= ngVer %>"<% } %><% if (sanitizeModule) { %>,
     "angular-sanitize": "^<%= ngVer %>"<% } %><% if (touchModule) { %>,
