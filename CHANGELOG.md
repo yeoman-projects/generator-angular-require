@@ -1,3 +1,21 @@
+<a name="0.4.0"></a>
+## 0.4.0 (2014-11-22)
+
+
+#### Bug Fixes
+
+* **build:**
+  * allow to copy font files from subfolders ([3ebce73e](https://github.com/aaronallport/generator-angular-require/commit/3ebce73e371a23f64aa920461341e873bb3b0772))
+  * do not clean git related subfolders of dist ([410563ad](https://github.com/aaronallport/generator-angular-require/commit/410563ad2fd963fb6b94483f63e5d53b6e11f229))
+* **gen:** Fix bower.json in generated projects ([4fdec83c](https://github.com/aaronallport/generator-angular-require/commit/4fdec83c1a55929ac9683f3c45cba9240021b2c9))
+* **view:** add forward slashes to menu items paths (href attribute) ([323bdaa7](https://github.com/aaronallport/generator-angular-require/commit/323bdaa73eb73c036e041ba48849c2ce83fa812a))
+
+
+#### Features
+
+* **app:** add ngAria and ngMessages ([371432ff](https://github.com/aaronallport/generator-angular-require/commit/371432fffe0fe7e15619861cce084e32cb73d1ce))
+
+
 <a name="0.3.3"></a>
 ### 0.3.3 (2014-10-11)
 
