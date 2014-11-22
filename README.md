@@ -214,25 +214,11 @@ CoffeeScript is not supported at this time. Sorry. We'll take a look at CoffeeSc
 
 ### What happened to the Minification Safe option?
 
-**Deprecated**
+**tl;dr**: You don't need to write annotated code as the build step will handle it for you.
 
-[Related Issue #452](https://github.com/yeoman/generator-angular/issues/452): This option has been removed in accordance with this issue on GitHub. The recommended build process uses `ngmin`, a tool that automatically adds these annotations. However, if you'd rather not use `ngmin`, you have to add these annotations manually yourself. *One thing to note is that `ngmin` does not produce minsafe code for things that are not main level elements like controller, services, providers, etc.:*
-```javascript
-resolve: {
-  User: function(myService) {
-    return MyService();
-  }
-}
-```
+By default, generators produce unannotated code. Without annotations, AngularJS's DI system will break when minified. Typically, these annotations that make minification safe are added automatically at build-time, after application files are concatenated, but before they are minified. The annotations are important because minified code will rename variables, making it impossible for AngularJS to infer module names based solely on function parameters.
 
-will need to be manually done like so:
-```javascript
-resolve: {
-  User: ['myService', function(myService) {
-    return MyService();
-  }]
-}
-```
+The recommended build process uses `ng-annotate`, a tool that automatically adds these annotations. However, if you'd rather not use it, you have to add these annotations manually yourself. Why would you do that though? If you find a bug in the annotated code, please file an issue at [ng-annotate](https://github.com/olov/ng-annotate/issues).
 
 ## Bower Components
 
@@ -245,8 +231,11 @@ The following packages are always installed by the [app](#app) generator:
 
 The following additional modules are available as components on bower, and installable via `bower install`:
 
+* angular-animate
+* angular-aria
 * angular-cookies
 * angular-loader
+* angular-messages
 * angular-resource
 * angular-sanitize
 
