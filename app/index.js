@@ -199,6 +199,10 @@ var AngularRequireJSGenerator = yeoman.generators.Base.extend({
       this.copy('../../templates/common/root/.jshintrc', '.jshintrc');
     },
 
+    readme: function() {
+      this.copy('root/README.md', 'README.md');  
+    },
+
     testDirectory: function() {
       this.directory('test');
     },
