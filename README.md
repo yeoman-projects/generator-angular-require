@@ -44,8 +44,6 @@ Available generators:
 * [angular-require:decorator](#decorator)
 * [angular-require:view](#view)
 
-**Note: Generators are to be run from the root directory of your app.**
-
 ### App
 Sets up a new AngularJS-RequireJS app, generating all the boilerplate you need to get started. The app generator also optionally installs Bootstrap and additional AngularJS modules, such as angular-resource (installed by default). All files created will be in the RequireJS/AMD format, and therefore all will be within "define" blocks.
 
