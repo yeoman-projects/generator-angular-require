@@ -18,8 +18,7 @@
     "requirejs": "^2.1.0"
   },
   "devDependencies": {
-    "angular-mocks": "^<%= ngVer %>",
-    "angular-scenario": "^<%= ngVer %>"
+    "angular-mocks": "^<%= ngVer %>"
   }<% if (appPath) { %>,
   "appPath": "<%= appPath %>"<% } %>
 }
