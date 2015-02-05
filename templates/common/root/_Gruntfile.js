@@ -475,6 +475,7 @@ module.exports = function (grunt) {
     'clean:server',
     'bower:app',
     'replace:test',
+    'wiredep',
     'concurrent:test',
     'autoprefixer',
     'connect:test',
