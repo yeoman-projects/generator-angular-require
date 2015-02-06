@@ -314,7 +314,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           // cwd: '<%%= yeoman.app %>/scripts',
-          src: ['<%%= yeoman.app %>/scripts/**/*.js', '!<%%= yeoman.app %>/scripts/oldieshim.js'],
+          src: ['<%%= yeoman.app %>/scripts/**/*.js'],
           dest: '.tmp'
         }]
       }
