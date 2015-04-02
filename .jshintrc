@@ -1,23 +1,21 @@
 {
-	"bitwise": false,
-	"curly": false,
+	"bitwise": true,
+	"camelcase": true,
+	"curly": true,
 	"eqeqeq": true,
 	"eqnull": true,
 	"esnext": true,
-	"globals": {
-		/* AMD */
-		"define" : false,
-		/* Custom */
-		"ngRoutes": false,
-		"ngSanitize": false,
-		"ngCookies": false,
-		"ngResource": false
-	},
 	"globalstrict": true,
 	"immed": true,
 	"latedef": true,
+	"mocha": true,
 	"newcap": true,
 	"noarg": true,
+	"node": true,
 	"strict": false,
 	"undef": true,
+	"globals": {
+		/* AMD */
+		"define" : false
+	}
 }
