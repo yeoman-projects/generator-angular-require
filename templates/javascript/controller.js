@@ -9,8 +9,8 @@ define(['angular'], function (angular) {
    * Controller of the <%= scriptAppName %>
    */
   angular.module('<%= scriptAppName %>.controllers.<%= classedName %>Ctrl', [])
-    .controller('<%= classedName %>Ctrl', function ($scope) {
-      $scope.awesomeThings = [
+    .controller('<%= classedName %>Ctrl', function () {
+      this.awesomeThings = [
         'HTML5 Boilerplate',
         'AngularJS',
         'Karma'
