@@ -26,7 +26,7 @@ var ScriptBase = yeoman.generators.NamedBase.extend({
       this.scriptAppName = require(path.join(process.cwd(), 'bower.json')).moduleName;
     } catch (e) {}
 
-    this.scriptAppName = this.scriptAppName || this._.camelize(this.appname) + angularUtils.appName(this);
+    this.scriptAppName = bowerJson.moduleName || this._.camelize(this.appname) + angularUtils.appName(this);
 
     this.cameledName = this._.camelize(this.name);
     this.classedName = this._.classify(this.name);
