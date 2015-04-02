@@ -45,7 +45,7 @@
     "yeoman-generator": "^0.17.0",
     "bower-requirejs": "^1.1.2",
     "yosay": "^1.0.2",
-    "chalk": "^0.5.1",
+    "chalk": "^1.0.0",
     "wiredep": "^2.2.0"
   },
   "peerDependencies": {
