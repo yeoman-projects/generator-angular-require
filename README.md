@@ -7,6 +7,8 @@
 
 ## Usage
 
+For step-by-step instructions on using Yeoman and generators to build a TODO AngularJS application from scratch see [this tutorial.](http://yeoman.io/codelab/)
+
 Install `yo`, `grunt`, `bower`, `generator-angular-require` and `generator-karma-require`:
 ```
 npm install -g grunt bower yo generator-karma-require generator-angular-require
