@@ -1,7 +1,8 @@
+sudo: false
 language: node_js
 node_js:
-  - '0.10'
+  - 'iojs'
+  - '0.12'
 before_install:
   - currentfolder=${PWD##*/}
   - if [ "$currentfolder" != 'generator-angular-require' ]; then cd .. && eval "mv $currentfolder generator-angular-require" && cd generator-angular-require; fi
-
