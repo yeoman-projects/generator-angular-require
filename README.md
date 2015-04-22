@@ -10,9 +10,9 @@ There are many starting points for building a new Angular single page app, in ad
 
 For step-by-step instructions on using Yeoman and generators to build a TODO AngularJS application from scratch see [this tutorial.](http://yeoman.io/codelab/)
 
-Install `yo`, `grunt`, `bower`, `generator-angular-require` and `generator-karma-require`:
+Install `yo`, `grunt-cli`, `bower`, `generator-angular-require` and `generator-karma-require`:
 ```
-npm install -g grunt bower yo generator-karma-require generator-angular-require
+npm install -g grunt-cli bower yo generator-karma-require generator-angular-require
 ```
 
 Make a new directory, and `cd` into it:
