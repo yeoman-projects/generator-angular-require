@@ -15,8 +15,7 @@ var AngularRequireJSGenerator = yeoman.generators.Base.extend({
     this.option('app-suffix', {
       desc: 'Allow a custom suffix to be added to the module name',
       type: 'String',
-      defaults: 'App',
-      required: 'false'
+      defaults: 'App'
     });
 
     this.option('appPath', {
@@ -200,7 +199,7 @@ var AngularRequireJSGenerator = yeoman.generators.Base.extend({
     },
 
     readme: function() {
-      this.copy('root/README.md', 'README.md');  
+      this.copy('root/README.md', 'README.md');
     },
 
     testDirectory: function() {
