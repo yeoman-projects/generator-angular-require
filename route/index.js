@@ -16,9 +16,15 @@ var RouteGenerator = ScriptBase.extend({
       required: false
     });
 
+    var appPath = this.config.get('appPath')
+
+    if (typeof appPath === "undefined") {
+      appPath = this.env.options.appPath;
+    }
+
     var bower = require(path.join(process.cwd(), 'bower.json'));
     var match = require('fs').readFileSync(
-      path.join(this.config.get('appPath'), 'scripts/app.js'), 'utf-8'
+      path.join(appPath, 'scripts/app.js'), 'utf-8'
     ).match(/\.when/);
 
     if (
@@ -55,7 +61,7 @@ var RouteGenerator = ScriptBase.extend({
         splicable: [
           "  templateUrl: 'views/" + this.name.toLowerCase() + ".html',",
           "  controller: '" + this.classedName + "Ctrl,'",
-          "  controllerAs: '" + this.classedName + "'"
+          "  controllerAs: '" + this.cameledName + "'"
         ]
       };
 
