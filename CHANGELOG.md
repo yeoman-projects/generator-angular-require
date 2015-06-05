@@ -1,3 +1,56 @@
+<a name"0.5.0"></a>
+## 0.5.0 (2015-06-05)
+
+
+#### Bug Fixes
+
+* **app:**
+  * remove invalid parameter in app-suffix option config ([4a80ec3d](https://github.com/aaronallport/generator-angular-require/commit/4a80ec3d))
+  * remove IE6/7 CSS hacks ([78cd5fe5](https://github.com/aaronallport/generator-angular-require/commit/78cd5fe5))
+  * use `https://` in the Analytics script ([17286854](https://github.com/aaronallport/generator-angular-require/commit/17286854))
+  * remove `no-js` class ([bd87a230](https://github.com/aaronallport/generator-angular-require/commit/bd87a230))
+  * update `browsehappy` conditional comment ([85b9d267](https://github.com/aaronallport/generator-angular-require/commit/85b9d267))
+  * remove IE8 support ([ad8641fa](https://github.com/aaronallport/generator-angular-require/commit/ad8641fa))
+  * add empty repository field ([6db3c19a](https://github.com/aaronallport/generator-angular-require/commit/6db3c19a))
+  * remove angular-scenario ([060060f4](https://github.com/aaronallport/generator-angular-require/commit/060060f4))
+  * unify styles ([813f3964](https://github.com/aaronallport/generator-angular-require/commit/813f3964))
+  * change HTML markup for updated Bootstrap ([1c1a72d0](https://github.com/aaronallport/generator-angular-require/commit/1c1a72d0))
+  * set jasmine: true in test/.jshint ([a94788e7](https://github.com/aaronallport/generator-angular-require/commit/a94788e7))
+* **autoprefixer:** enable sourcemap for server target ([4a93b602](https://github.com/aaronallport/generator-angular-require/commit/4a93b602))
+* **gen:**
+  * switch ctrlAs name to a cameledName ([23eaef98](https://github.com/aaronallport/generator-angular-require/commit/23eaef98))
+  * use absolute paths in generated .gitignore ([b675b628](https://github.com/aaronallport/generator-angular-require/commit/b675b628))
+* **karma:** compass and autoprefixer need wiredep:sass for test task ([60e89ec9](https://github.com/aaronallport/generator-angular-require/commit/60e89ec9))
+
+
+#### Features
+
+* **app:**
+  * use `controller as` syntax ([b82b96b4](https://github.com/aaronallport/generator-angular-require/commit/b82b96b4))
+  * read module name form bower.json ([f07c1cd4](https://github.com/aaronallport/generator-angular-require/commit/f07c1cd4))
+  * read module name form bower.json ([27386f34](https://github.com/aaronallport/generator-angular-require/commit/27386f34))
+  * generate readme.md in resulting project ([c38f1db6](https://github.com/aaronallport/generator-angular-require/commit/c38f1db6))
+  * support running form non-root folders ([43587b96](https://github.com/aaronallport/generator-angular-require/commit/43587b96))
+
+
+#### Breaking Changes
+
+* Removed IE8 support files
+
+Merged from
+https://github.com/yeoman/generator-angular/commit/7c6f245b73ce59782aed0
+a1efd300e83569eb0e8
+
+ ([ad8641fa](https://github.com/aaronallport/generator-angular-require/commit/ad8641fa))
+* no longer include angular-scenario
+
+Merged from
+https://github.com/yeoman/generator-angular/commit/947b31b5f252446fd44c4
+7866bbf830e4b3b4101
+
+ ([060060f4](https://github.com/aaronallport/generator-angular-require/commit/060060f4))
+
+
 <a name="0.4.2"></a>
 ### 0.4.2 (2015-02-11)
 
