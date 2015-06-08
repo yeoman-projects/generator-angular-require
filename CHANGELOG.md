@@ -1,3 +1,13 @@
+<a name"1.0.0"></a>
+### 1.0.0 (2015-06-08)
+
+
+#### Bug Fixes
+
+* **gen:**
+  * fix for route generation ([326350f4](https://github.com/aaronallport/generator-angular-require/commit/326350f4))
+
+
 <a name"0.5.0"></a>
 ## 0.5.0 (2015-06-05)
 
