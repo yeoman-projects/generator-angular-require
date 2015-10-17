@@ -3,9 +3,13 @@
 This project is generated with [yo angular-require generator](https://github.com/aaronallport/generator-angular-require)
 version <%= pkg.version %>.
 
-## Build & development
+## Development & building
 
-Run `grunt` for building and `grunt serve` for preview.
+Run `grunt serve` for development preview.
+
+Run `grunt` for building.
+
+Run `grunt serve:dist` for building and previewing.
 
 ## Testing
 
