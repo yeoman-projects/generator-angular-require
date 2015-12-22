@@ -86,6 +86,7 @@ describe('Angular-RequireJS generator appPath option', function () {
       this.angularRequire.app
         .on('end', function() {
           assert.file([].concat(expected, [
+            '.jscsrc',
             appPath + '/scripts/app.js',
             appPath + '/scripts/controllers/main.js',
             'test/spec/controllers/mainSpec.js'

@@ -189,6 +189,10 @@ var AngularRequireJSGenerator = yeoman.generators.Base.extend({
       this.copy('../../templates/common/root/.editorconfig', '.editorconfig');
     },
 
+    jscsrc: function() {
+      this.copy('../../templates/common/root/.jscsrc', '.jscsrc');
+    },
+
     git: function() {
       this.copy('../../templates/common/root/.gitattributes', '.gitattributes');
       this.copy('../../templates/common/root/gitignore', '.gitignore');
