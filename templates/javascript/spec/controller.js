@@ -8,10 +8,13 @@ define(['angular', 'angular-mocks', 'app'], function(angular, mocks, app) {
     beforeEach(module('<%= scriptAppName %>.controllers.<%= classedName %>Ctrl'));
 
     var <%= classedName %>Ctrl;
+    var scope;
 
     // Initialize the controller and a mock scope
     beforeEach(inject(function ($controller, $rootScope) {
+      scope = $rootScope.$new();
       <%= classedName %>Ctrl = $controller('<%= classedName %>Ctrl', {
+        $scope: scope
         // place here mocked dependencies
       });
     }));
