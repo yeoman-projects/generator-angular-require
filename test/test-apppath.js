@@ -12,7 +12,6 @@ describe('Angular-RequireJS generator appPath option', function () {
   var appPath = 'customAppPath';
   var appName = 'App';
   var expected = [
-    appPath + '/.htaccess',
     appPath + '/404.html',
     appPath + '/favicon.ico',
     appPath + '/robots.txt',

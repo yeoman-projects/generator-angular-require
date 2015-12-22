@@ -243,7 +243,6 @@ var AngularRequireJSGenerator = yeoman.generators.Base.extend({
       }.bind(this);
 
       copy('.buildignore');
-      copy('.htaccess');
       copy('404.html');
       copy('favicon.ico');
       copy('robots.txt');
