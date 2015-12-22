@@ -242,7 +242,6 @@ var AngularRequireJSGenerator = yeoman.generators.Base.extend({
         this.copy(path.join('app', dest), path.join(this.appPath, dest));
       }.bind(this);
 
-      copy('.buildignore');
       copy('404.html');
       copy('favicon.ico');
       copy('robots.txt');
