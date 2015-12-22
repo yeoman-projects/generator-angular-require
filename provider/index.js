@@ -13,7 +13,7 @@ var ProviderGenerator = ScriptBase.extend({
   createServiceFiles: function() {
     this.generateSourceAndTest(
       'service/provider',
-      'spec/service',
+      'spec/provider',
       'services',
       true	// Skip adding the script to the index.html file of the application
     );
