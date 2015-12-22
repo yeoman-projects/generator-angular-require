@@ -32,11 +32,6 @@ module.exports = function (grunt) {
         },
         tagName: 'v<%= version %>',
       }
-    },
-    stage: {
-      options: {
-        files: ['CHANGELOG.md']
-      }
     }
   });
 
@@ -79,7 +74,6 @@ module.exports = function (grunt) {
       'default',
       'bump' + (type ? ':' + type : ''),
       'changelog',
-      'stage',
       'release',
       'conventionalGithubReleaser'
     ]);
