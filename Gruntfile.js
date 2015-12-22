@@ -38,7 +38,6 @@ module.exports = function (grunt) {
   grunt.registerTask('publish', function (type) {
     grunt.task.run([
       'bump' + (type ? ':' + type : ''),
-      'changelog',
       'npmPublish',
       'conventionalGithubReleaser'
     ]);
