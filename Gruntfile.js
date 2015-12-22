@@ -25,8 +25,6 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.registerTask('default', ['jshint']);
-
   grunt.registerTask('npmPublish', 'Publish to npm', function () {
     grunt.util.spawn({
       cmd: 'npm',
@@ -39,7 +37,6 @@ module.exports = function (grunt) {
   // be patched to do the same so it commits the changelog as well.
   grunt.registerTask('publish', function (type) {
     grunt.task.run([
-      'default',
       'bump' + (type ? ':' + type : ''),
       'changelog',
       'npmPublish',
