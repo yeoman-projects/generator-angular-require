@@ -12,7 +12,7 @@ module.exports = function (grunt) {
             token: process.env.GITHUB_AUTHTOKEN
           },
           changelogOpts: {
-            preset: 'angular',
+            preset: 'angular-require',
             releaseCount: 1
           }
         }
