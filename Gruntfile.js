@@ -6,10 +6,18 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    changelog: {
-      options: {
-        dest: 'CHANGELOG.md',
-        versionFile: 'package.json'
+    conventionalGithubReleaser: {
+      release: {
+        options: {
+          auth: {
+            type: 'oauth',
+            token: process.env.GITHUB_AUTHTOKEN
+          },
+          changelogOpts: {
+            preset: 'angular',
+            releaseCount: 0
+          }
+        }
       }
     },
     release: {
@@ -72,7 +80,8 @@ module.exports = function (grunt) {
       'bump' + (type ? ':' + type : ''),
       'changelog',
       'stage',
-      'release'
+      'release',
+      'conventionalGithubReleaser'
     ]);
   });
 };
