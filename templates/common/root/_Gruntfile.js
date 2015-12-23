@@ -443,7 +443,7 @@ module.exports = function (grunt) {
     },
 
     // Settings for grunt-bower-requirejs
-    bower: {
+    bowerRequirejs: {
       app: {
         rjsConfig: '<%%= yeoman.app %>/scripts/main.js',
         options: {
@@ -495,7 +495,7 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'wiredep',
-      'bower:app',
+      'bowerRequirejs:app',
       'concurrent:server',
       'postcss:server',
       'connect:livereload',
@@ -510,7 +510,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('test', [
     'clean:server',
-    'bower:app',
+    'bowerRequirejs:app',
     'replace:test',
     'wiredep',
     'concurrent:test',
@@ -522,7 +522,7 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'clean:dist',
     'wiredep',
-    'bower:app',
+    'bowerRequirejs:app',
     'replace:test',
     'useminPrepare',
     'concurrent:dist',
