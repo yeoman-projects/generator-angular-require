@@ -83,7 +83,7 @@ Produces `app/views/myroute.html`:
 
 Example:
 ```bash
-yo angular:route myRoute --uri=my/route
+yo angular-require:route myRoute --uri=my/route
 ```
 Produces controller and view as above and adds a route to `app/scripts/app.js` with URI `my/route`
 
@@ -183,7 +183,7 @@ define(['angular'], function (angular) {
 });
 ```
 
-You can also do `yo angular:factory`, `yo angular:provider`, `yo angular:value`, and `yo angular:constant` for other types of services.
+You can also do `yo angular-require:factory`, `yo angular-require:provider`, `yo angular-require:value`, and `yo angular-require:constant` for other types of services.
 
 ### Decorator
 Generates an AngularJS service decorator.
@@ -263,7 +263,7 @@ This will cause Yeoman-generated client-side files to be placed in `public`.
 
 Note that you can also achieve the same results by adding an `--appPath` option when starting generator:
 ```bash
-yo angular [app-name] --appPath=public
+yo angular-require [app-name] --appPath=public
 ```
 
 ## Testing
