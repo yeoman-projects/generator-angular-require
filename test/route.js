@@ -3,56 +3,63 @@
 var path = require('path');
 var helpers = require('yeoman-test');
 var assert = require('yeoman-assert');
+var generateFullProject = require('./utils').generateFullProject;
 
-describe('angular-require:app appName', function () {
+describe('angular-require:route', function () {
   beforeEach(function (done) {
-    helpers
-      .run(require.resolve('../app'))
-      .withGenerators([
-        require.resolve('../common'),
-        require.resolve('../controller'),
-        require.resolve('../main'),
-        [helpers.createDummyGenerator(), 'karma:app']
-      ])
-      .withOptions({
-        'appPath': 'app',
-        'skip-welcome-message': true,
-        'skip-message': true
-      })
-      .withArguments(['upperCaseBug'])
+    generateFullProject()
       .withPrompts({
-        compass: true,
-        bootstrap: true,
-        compassBootstrap: true,
-        modules: []
+        modules: ['routeModule']
       })
-      .on('end', done);
+      .on('end', function () {
+        this.angularRequireRoute = helpers.run(require.resolve('../route'))
+          .withGenerators([
+            require.resolve('../controller'),
+            require.resolve('../view')
+          ])
+          .withOptions({
+            appPath: 'app'
+          })
+          .withArguments(['simpleroute']);
+
+        // Hack to not clear the directory
+        this.angularRequireRoute.inDirSet = true;
+
+        done();
+      }.bind(this));
   });
 
-  it('generates the same appName in every file', function () {
-    assert.file([
-      'app/scripts/app.js',
-      'app/scripts/controllers/main.js',
-      'app/index.html',
-      'test/spec/controllers/main.js'
-    ]);
+  it('generates default route items', function (done) {
+    this.angularRequireRoute.on('end', function () {
+      assert.file([
+        'app/scripts/controllers/simpleroute.js',
+        'test/spec/controllers/simpleroute.js',
+        'app/views/simpleroute.html'
+      ]);
+      assert.fileContent(
+        'app/scripts/app.js',
+        /when\('\/simpleroute'/
+      );
+      done();
+    });
+  });
 
-    assert.fileContent(
-      'app/scripts/app.js',
-      /module\('upperCaseBugApp'/
-    );
-    assert.fileContent(
-      'app/scripts/controllers/main.js',
-      /module\('upperCaseBugApp'/
-    );
-    assert.fileContent(
-      'test/spec/controllers/main.js',
-      /module\('upperCaseBugApp'/
-    );
-
-    assert.fileContent(
-      'app/index.html',
-      /ng-app="upperCaseBugApp"/
-    );
+  it('generates route items with the route uri given', function (done) {
+    this.angularRequireRoute
+      .withOptions({
+        uri: 'segment1/segment2/:parameter'
+      })
+      .on('end', function () {
+        assert.file([
+          'app/scripts/controllers/simpleroute.js',
+          'test/spec/controllers/simpleroute.js',
+          'app/views/simpleroute.html'
+        ]);
+        assert.fileContent(
+          'app/scripts/app.js',
+          /when\('\/segment1\/segment2\/\:parameter'/
+        );
+        done();
+      });
   });
 });
