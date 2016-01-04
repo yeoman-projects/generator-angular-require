@@ -3,7 +3,7 @@
 var path    = require('path');
 var yeoman  = require('yeoman-generator');
 var helpers = yeoman.test;
-var assert  = yeoman.assert;
+var assert  = require('yeoman-assert');
 var fs      = require('fs');
 
 describe('Angular-RequireJS generator template mechanism', function () {
