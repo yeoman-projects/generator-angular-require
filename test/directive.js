@@ -14,7 +14,7 @@ describe('angular-require:directive', function () {
   });
 
   it('generates a new directive', function () {
-    assert.file('test/spec/directives/foo.js');
+    assert.file('test/spec/directives/fooSpec.js');
     assert.fileContent(
       path.join('app/scripts/directives/foo.js'),
       /directive\('foo'/

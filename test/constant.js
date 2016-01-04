@@ -14,7 +14,7 @@ describe('angular-require:constant', function () {
   });
 
   it('generates a new constant', function () {
-    assert.file('test/spec/services/foo.js');
+    assert.file('test/spec/services/fooSpec.js');
     assert.fileContent(
       path.join('app/scripts/services/foo.js'),
       /constant\('foo'/

@@ -14,7 +14,7 @@ describe('angular-require:service', function () {
   });
 
   it('generates a new service', function () {
-    assert.file('test/spec/services/foo.js');
+    assert.file('test/spec/services/fooSpec.js');
     assert.fileContent(
       path.join('app/scripts/services/foo.js'),
       /service\('foo'/

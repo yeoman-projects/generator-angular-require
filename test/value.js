@@ -9,12 +9,12 @@ describe('angular-require:value', function () {
   beforeEach(function (done) {
     helpers
       .run(require.resolve('../value'))
-      .withArguments('foo')
+      .withArguments(['foo'])
       .on('end', done);
   });
 
   it('generates a new value', function () {
-    assert.file('test/spec/services/foo.js');
+    assert.file('test/spec/services/fooSpec.js');
     assert.fileContent(
       path.join('app/scripts/services/foo.js'),
       /value\('foo'/

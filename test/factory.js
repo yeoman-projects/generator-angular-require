@@ -14,7 +14,7 @@ describe('angular-require:factory', function () {
   });
 
   it('generates a new factory', function () {
-    assert.file('test/spec/services/foo.js');
+    assert.file('test/spec/services/fooSpec.js');
     assert.fileContent(
       path.join('app/scripts/services/foo.js'),
       /factory\('foo'/

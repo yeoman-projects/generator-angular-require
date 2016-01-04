@@ -33,7 +33,7 @@ describe('angular-require:route', function () {
     this.angularRequireRoute.on('end', function () {
       assert.file([
         'app/scripts/controllers/simpleroute.js',
-        'test/spec/controllers/simpleroute.js',
+        'test/spec/controllers/simplerouteSpec.js',
         'app/views/simpleroute.html'
       ]);
       assert.fileContent(
@@ -52,7 +52,7 @@ describe('angular-require:route', function () {
       .on('end', function () {
         assert.file([
           'app/scripts/controllers/simpleroute.js',
-          'test/spec/controllers/simpleroute.js',
+          'test/spec/controllers/simplerouteSpec.js',
           'app/views/simpleroute.html'
         ]);
         assert.fileContent(

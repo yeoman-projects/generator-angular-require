@@ -14,7 +14,7 @@ describe('angular-require:controller', function () {
   });
 
   it('generates a new controller', function () {
-    assert.file('test/spec/controllers/foo.js');
+    assert.file('test/spec/controllers/fooSpec.js');
     assert.fileContent(
       path.join('app/scripts/controllers/foo.js'),
       /controller\('FooCtrl'/

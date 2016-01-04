@@ -5,7 +5,7 @@ var path = require('path');
 var helpers = require('yeoman-test');
 var assert = require('yeoman-assert');
 
-describe('angular-require:constant', function () {
+describe('angular-require:view', function () {
   beforeEach(function () {
     this.angularView = helpers
       .run(require.resolve('../view'))

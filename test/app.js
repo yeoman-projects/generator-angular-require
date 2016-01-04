@@ -26,7 +26,7 @@ describe('angular-require:app', function () {
   var appPath = 'customAppPath';
 
   beforeEach(function () {
-    this.angular = helpers
+    this.angularRequire = helpers
       .run(require.resolve('../app'))
       .withGenerators([
         require.resolve('../controller'),
@@ -47,7 +47,7 @@ describe('angular-require:app', function () {
 
   describe('default settings', function () {
     beforeEach(function (done) {
-      this.angular.on('end', done);
+      this.angularRequire.on('end', done);
     });
 
     it('generates base files', function () {
@@ -57,14 +57,14 @@ describe('angular-require:app', function () {
         'app/index.html',
         'app/scripts/app.js',
         'app/scripts/controllers/main.js',
-        'test/spec/controllers/main.js'
+        'test/spec/controllers/mainSpec.js'
       ]);
     });
   });
 
   describe('--appPath', function () {
     beforeEach(function (done) {
-      this.angular.withOptions({
+      this.angularRequire.withOptions({
         appPath: 'alternative'
       }).on('end', done);
     });
@@ -75,14 +75,14 @@ describe('angular-require:app', function () {
         '.jscsrc',
         'alternative/scripts/app.js',
         'alternative/scripts/controllers/main.js',
-        'test/spec/controllers/main.js'
+        'test/spec/controllers/mainSpec.js'
       ]);
     });
   });
 
   describe('--appName', function () {
     beforeEach(function (done) {
-      this.angular
+      this.angularRequire
         .withArguments(['upperCaseBug'])
         .on('end', done);
     });
@@ -94,11 +94,11 @@ describe('angular-require:app', function () {
       );
       assert.fileContent(
         'app/scripts/controllers/main.js',
-        /module\('upperCaseBugApp'/
+        /module\('upperCaseBugApp\.controllers/
       );
       assert.fileContent(
-        'test/spec/controllers/main.js',
-        /module\('upperCaseBugApp'/
+        'test/spec/controllers/mainSpec.js',
+        /module\('upperCaseBugApp\.controllers/
       );
 
       assert.fileContent(
