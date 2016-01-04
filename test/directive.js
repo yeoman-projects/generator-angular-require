@@ -10,12 +10,6 @@ describe('angular-require:directive', function () {
     helpers
       .run(require.resolve('../directive'))
       .withArguments('foo')
-      .inTmpDir(function (dir) {
-        fs.writeFileSync(
-          path.join(dir, 'bower.json'),
-          '{"appPath": "app"}'
-        );
-      })
       .on('end', done);
   });
 

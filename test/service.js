@@ -10,12 +10,6 @@ describe('angular-require:service', function () {
     helpers
       .run(require.resolve('../service'))
       .withArguments('foo')
-      .inTmpDir(function (dir) {
-        fs.writeFileSync(
-          path.join(dir, 'bower.json'),
-          '{"appPath": "app"}'
-        );
-      })
       .on('end', done);
   });
 

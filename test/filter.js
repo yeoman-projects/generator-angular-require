@@ -10,12 +10,6 @@ describe('angular-require:filter', function () {
     helpers
       .run(require.resolve('../filter'))
       .withArguments('foo')
-      .inTmpDir(function (dir) {
-        fs.writeFileSync(
-          path.join(dir, 'bower.json'),
-          '{"appPath": "app"}'
-        );
-      })
       .on('end', done);
   });
 
