@@ -17,9 +17,8 @@ function rewriteFile (args) {
 function injectIntoFile (appPath, moduleName, attachedComponentName, injectedModuleName) {
   // Set up config object
   var config = {
-    file: path.join(
-      appPath,
-      'scripts/app.js'),
+    path: appPath,
+    file: 'scripts/app.js',
     needle: "",
     splicable: [],
     spliceWithinLine: true
