@@ -21,8 +21,14 @@ var FilterGenerator = ScriptBase.extend({
 
   // Re-write the main app module to account for our new dependency
   injectDependenciesToApp: function () {
-    angularUtils.injectIntoFile(
-      this.config.get('appPath'),
+      var appPath = this.config.get('appPath');
+
+      if (typeof appPath === "undefined") {
+        appPath = this.env.options.appPath;
+      }
+
+      angularUtils.injectIntoFile(
+        appPath,
       'filters/' + this.name.toLowerCase(),
       this.classedName + 'Filter',
       this.scriptAppName + '.filters.' + this.classedName
