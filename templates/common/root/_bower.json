@@ -1,5 +1,5 @@
 {<% var ngVer = "1.4.0" %>
-  "name": "<%= _.slugify(_.humanize(appname)) %>",
+  "name": "<%= appSlugName %>",
   "version": "0.0.0",
   "dependencies": {
     "angular": "^<%= ngVer %>"<% if (animateModule) { %>,

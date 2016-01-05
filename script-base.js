@@ -4,10 +4,18 @@ var path = require('path');
 var yeoman = require('yeoman-generator');
 var angularUtils = require('./util.js');
 var chalk = require('chalk');
+var _ = require('lodash');
+var slugify = require("underscore.string/slugify");
+var humanize = require("underscore.string/humanize");
+var camelize = require("underscore.string/camelize");
+var classify = require("underscore.string/classify");
+var dasherize = require("underscore.string/dasherize");
 
-var ScriptBase = yeoman.generators.NamedBase.extend({
+var ScriptBase = yeoman.Base.extend({
   constructor: function(name) {
-    yeoman.generators.NamedBase.apply(this, arguments);
+    yeoman.Base.apply(this, arguments);
+
+    this.argument('name', { type: String, required: true });
 
     var bowerJson = {};
 
@@ -20,16 +28,17 @@ var ScriptBase = yeoman.generators.NamedBase.extend({
     } else {
       this.appname = path.basename(process.cwd());
     }
-    this.appname = this._.slugify(this._.humanize(this.appname));
+    this.appname = slugify(humanize(this.appname));
 
     try {
       this.scriptAppName = require(path.join(process.cwd(), 'bower.json')).moduleName;
     } catch (e) {}
 
-    this.scriptAppName = bowerJson.moduleName || this._.camelize(this.appname) + angularUtils.appName(this);
+    this.scriptAppName = bowerJson.moduleName || camelize(this.appname) + angularUtils.appName(this);
 
-    this.cameledName = this._.camelize(this.name);
-    this.classedName = this._.classify(this.name);
+    this.cameledName = camelize(this.name);
+    this.classedName = classify(this.name);
+    this.dasherizedName = dasherize(this.name);
 
     if (typeof this.env.options.appPath === 'undefined') {
       this.env.options.appPath = this.options.appPath || bowerJson.appPath || 'app';
@@ -53,17 +62,23 @@ var ScriptBase = yeoman.generators.NamedBase.extend({
       appPath = this.env.options.appPath;
     }
 
-    yeoman.generators.Base.prototype.template.apply(this, [
+    yeoman.Base.prototype.template.apply(this, [
       src + this.scriptSuffix,
       path.join(appPath, dest.toLowerCase()) + this.scriptSuffix
     ]);
   },
 
   testTemplate: function(src, dest) {
-    yeoman.generators.Base.prototype.template.apply(this, [
-      src + this.scriptSuffix,
-      path.join(this.env.options.testPath, dest.toLowerCase()) + 'Spec' + this.scriptSuffix
-    ]);
+    this.fs.copyTpl(
+      this.templatePath(src + this.scriptSuffix),
+      path.join(this.env.options.testPath, dest.toLowerCase()) + 'Spec' + this.scriptSuffix,
+      {
+        cameledName: this.cameledName,
+        classedName: this.classedName,
+        dasherizedName: this.dasherizedName,
+        scriptAppName: this.scriptAppName
+      }
+    );
   },
 
   htmlTemplate: function(src, dest) {
@@ -73,7 +88,7 @@ var ScriptBase = yeoman.generators.NamedBase.extend({
       appPath = this.env.options.appPath;
     }
 
-    yeoman.generators.Base.prototype.template.apply(this, [
+    yeoman.Base.prototype.template.apply(this, [
       src,
       path.join(appPath, dest.toLowerCase())
     ]);

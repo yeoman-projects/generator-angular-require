@@ -15,7 +15,7 @@ define(['angular', 'angular-mocks', 'app'], function(angular, mocks, app) {
     }));
 
     it('should make hidden element visible', inject(function ($compile) {
-      element = angular.element('<<%= _.dasherize(name) %>></<%= _.dasherize(name) %>>');
+      element = angular.element('<<%= dasherizedName %>></<%= dasherizedName %>>');
       element = $compile(element)(scope);
       expect(element.text()).toBe('this is the <%= cameledName %> directive');
     }));

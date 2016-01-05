@@ -7,10 +7,18 @@ var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 var wiredep = require('wiredep');
 var chalk = require('chalk');
+var _ = require('lodash');
+var camelize = require('underscore.string/camelize');
+var slugify = require('underscore.string/slugify');
+var humanize = require('underscore.string/humanize');
 
-var AngularRequireJSGenerator = yeoman.generators.Base.extend({
+var AngularRequireJSGenerator = yeoman.Base.extend({
   constructor: function() {
-    yeoman.generators.Base.apply(this, arguments);
+    yeoman.Base.apply(this, arguments);
+
+    // Backwards compatability
+    // TODO: remove engine in future and use yeoman html-wiring instead
+    this.engine = require('ejs').render
 
     this.option('app-suffix', {
       desc: 'Allow a custom suffix to be added to the module name',
@@ -28,7 +36,8 @@ var AngularRequireJSGenerator = yeoman.generators.Base.extend({
 
     this.argument('appname', { type: String, required: false });
     this.appname = this.appname || path.basename(process.cwd());
-    this.appname = this._.camelize(this._.slugify(this._.humanize(this.appname)));
+    this.appname = camelize(slugify(humanize(this.appname)));
+    this.appSlugName = slugify(humanize(this.appname))
 
     this.env.options['app-suffix'] = this.options['app-suffix'] || 'App';
     this.scriptAppName = this.appname + angularUtils.appName(this);
@@ -173,12 +182,41 @@ var AngularRequireJSGenerator = yeoman.generators.Base.extend({
 
   configuring: {
     bowerConfig: function() {
-      this.template('root/_bowerrc', '.bowerrc');
-      this.template('root/_bower.json', 'bower.json');
+      this.fs.copyTpl(
+        this.templatePath('root/_bowerrc'),
+        this.destinationPath('.bowerrc')
+      );
+
+      this.fs.copyTpl(
+        this.templatePath('root/_bower.json'),
+        this.destinationPath('bower.json'),
+        {
+          appSlugName: this.appSlugName,
+          animateModule: this.animateModule,
+          ariaModule: this.ariaModule,
+          cookiesModule: this.cookiesModule,
+          messagesModule: this.messagesModule,
+          resourceModule: this.resourceModule,
+          routeModule: this.routeModule,
+          sanitizeModule: this.sanitizeModule,
+          touchModule: this.touchModule,
+          bootstrap: this.bootstrap,
+          compassBootstrap: this.compassBootstrap,
+          appPath: this.appPath,
+          scriptAppName: this.scriptAppName
+        }
+      );
     },
 
     packageJson: function() {
-      this.template('root/_package.json', 'package.json');
+      this.fs.copyTpl(
+        this.templatePath('root/_package.json'),
+        this.destinationPath('package.json'),
+        {
+          appSlugName: this.appSlugName,
+          compass: this.compass
+        }
+      );
     },
 
     gruntfile: function() {
@@ -203,7 +241,14 @@ var AngularRequireJSGenerator = yeoman.generators.Base.extend({
     },
 
     readme: function() {
-      this.copy('root/README.md', 'README.md');
+      this.fs.copyTpl(
+        this.templatePath('root/README.md'),
+        this.destinationPath('README.md'),
+        {
+          appSlugName: this.appSlugName,
+          pkg: this.pkg
+        }
+      );
     },
 
     testDirectory: function() {

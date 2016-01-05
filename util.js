@@ -1,6 +1,7 @@
 'use strict';
 var path = require('path');
 var fs = require('fs');
+var classify = require('underscore.string/classify');
 
 function rewriteFile (args) {
   args.path = args.path || process.cwd();
@@ -110,7 +111,7 @@ function appName (self) {
   if (counter === 0 || (typeof suffix === 'boolean' && suffix)) {
     suffix = 'App';
   }
-  return suffix ? self._.classify(suffix) : '';
+  return suffix ? classify(suffix) : '';
 }
 
 module.exports = {
