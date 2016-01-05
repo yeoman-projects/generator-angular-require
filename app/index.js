@@ -1,13 +1,11 @@
 'use strict';
+
 var fs = require('fs');
 var path = require('path');
 var util = require('util');
 var angularUtils = require('../util.js');
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
-var wiredep = require('wiredep');
-var chalk = require('chalk');
-var _ = require('lodash');
 var camelize = require('underscore.string/camelize');
 var slugify = require('underscore.string/slugify');
 var humanize = require('underscore.string/humanize');

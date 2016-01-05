@@ -1,10 +1,10 @@
 'use strict';
+
 var path = require('path');
 var util = require('util');
 var ScriptBase = require('../script-base.js');
 var angularUtils = require('../util.js');
 var fs = require('fs');
-var yeoman = require('yeoman-generator');
 
 var buildRelativePath = function(fileName){
   return path.join('decorators', fileName + "Decorator");
@@ -21,7 +21,6 @@ var DecoratorGenerator = ScriptBase.extend({
   askForOverwrite: function() {
     var cb = this.async();
 
-    // TODO: Any yeoman.util function to handle this?
     if (fs.existsSync(path.join(
       this.env.cwd, this.env.options.appPath,
       'scripts', buildRelativePath(this.fileName) + ".js"

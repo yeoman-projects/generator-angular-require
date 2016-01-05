@@ -1,10 +1,10 @@
 'use strict';
+
 var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
 var angularUtils = require('./util.js');
 var chalk = require('chalk');
-var _ = require('lodash');
 var slugify = require("underscore.string/slugify");
 var humanize = require("underscore.string/humanize");
 var camelize = require("underscore.string/camelize");
@@ -51,8 +51,6 @@ var ScriptBase = yeoman.Base.extend({
     this.scriptSuffix = '.js';
 
     this.sourceRoot(path.join(__dirname, sourceRoot));
-
-    // util.inherits(ScriptBase, yeoman.generators.NamedBase);
   },
 
   appTemplate: function(src, dest) {

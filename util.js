@@ -1,4 +1,5 @@
 'use strict';
+
 var path = require('path');
 var fs = require('fs');
 var classify = require('underscore.string/classify');
@@ -10,6 +11,7 @@ function rewriteFile (args) {
   args.spliceWithinLine = args.spliceWithinLine || false;
 
   args.haystack = fs.readFileSync(fullPath, 'utf8');
+  
   var body = rewrite(args);
 
   fs.writeFileSync(fullPath, body);

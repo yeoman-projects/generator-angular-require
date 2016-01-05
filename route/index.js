@@ -1,10 +1,10 @@
 'use strict';
+
 var path = require('path');
 var chalk = require('chalk');
 var util = require('util');
 var ScriptBase = require('../script-base.js');
 var angularUtils = require('../util.js');
-var yeoman = require('yeoman-generator');
 
 var RouteGenerator = ScriptBase.extend({
   constructor: function() {

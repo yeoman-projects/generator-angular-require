@@ -1,10 +1,8 @@
 'use strict';
+
 var path = require('path');
 var util = require('util');
 var ScriptBase = require('../script-base.js');
-var angularUtils = require('../util.js');
-var yeoman = require('yeoman-generator');
-var _ = require('lodash');
 
 var ViewGenerator = ScriptBase.extend({
   constructor: function() {
