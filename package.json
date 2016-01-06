@@ -51,7 +51,6 @@
     "wiredep": "^3.0.0"
   },
   "peerDependencies": {
-    "generator-karma-require": "^1.0.0",
     "yo": ">=1.0.0"
   },
   "devDependencies": {
