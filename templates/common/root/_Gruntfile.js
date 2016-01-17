@@ -13,7 +13,8 @@ module.exports = function (grunt) {
   require('jit-grunt')(grunt, {
     useminPrepare: 'grunt-usemin',
     ngtemplates: 'grunt-angular-templates',
-    cdnify: 'grunt-google-cdn'
+    cdnify: 'grunt-google-cdn',
+    replace: 'grunt-text-replace'
   });
 
   // Time how long tasks take. Can help when optimizing build times
