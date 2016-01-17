@@ -136,43 +136,41 @@ var AngularRequireJSGenerator = yeoman.Base.extend({
       var angMods = [];
 
       if (this.cookiesModule) {
-        angMods.push("'ngCookies'");
+        angMods.push('ngCookies');
       }
 
       if (this.ariaModule) {
-        angMods.push("'ngAria'");
+        angMods.push('ngAria');
       }
 
       if (this.messagesModule) {
-        angMods.push("'ngMessages'");
+        angMods.push('ngMessages');
       }
 
       if (this.resourceModule) {
-        angMods.push("'ngResource'");
+        angMods.push('ngResource');
       }
 
       if (this.sanitizeModule) {
-        angMods.push("'ngSanitize'");
+        angMods.push('ngSanitize');
       }
 
       if (this.routeModule) {
-        angMods.push("'ngRoute'");
+        angMods.push('ngRoute');
         this.env.options.ngRoute = true;
       }
 
       if (this.routeModule) {
-        angMods.push("'ngAnimate'");
+        angMods.push('ngAnimate');
         this.env.options.ngAnimate = true;
       }
 
       if (this.routeModule) {
-        angMods.push("'ngTouch'");
+        angMods.push('ngTouch');
         this.env.options.ngTouch = true;
       }
 
-      if (angMods.length) {
-        this.env.options.angularDeps = '\n    ' + angMods.join(',\n    ') + '\n  ';
-      }
+      this.env.options.angularDeps = angMods;
 
       cb();
     }.bind(this));
