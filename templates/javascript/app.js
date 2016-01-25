@@ -11,10 +11,7 @@ define(['angular']/*deps*/, function (angular)/*invoke*/ {
    * Main module of the application.
    */
   return angular
-    .module('<%= scriptAppName %>', [/*angJSDeps*/<% for (var i = 0; i < angularModules.length; i++) { %>
-      '<%= angularModules[i] %>'<% if (i < angularModules.length - 1) { %>,<% } -%><% } -%>
-
-    ])<% if (ngRoute) { %>
+    .module('<%= scriptAppName %>', [/*angJSDeps*/<%- angularModules %>])<% if (ngRoute) { %>
     .config(function ($routeProvider) {
       $routeProvider
         .when('/', {
