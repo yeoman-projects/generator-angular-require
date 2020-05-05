@@ -1,4 +1,4 @@
-# AngularJS-RequireJS generator
+# **ARCHIVED** AngularJS-RequireJS generator
 
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) [![Build Status](https://travis-ci.org/aaronallport/generator-angular-require.svg?branch=master)](https://travis-ci.org/aaronallport/generator-angular-require) [![Dependency status](https://david-dm.org/aaronallport/generator-angular-require/status.png)](https://david-dm.org/aaronallport/generator-angular-require#info=dependencies&view=table) [![Dev Dependency Status](https://david-dm.org/aaronallport/generator-angular-require/dev-status.png)](https://david-dm.org/aaronallport/generator-angular-require#info=devDependencies&view=table) [![Peer Dependency Status](https://david-dm.org/aaronallport/generator-angular-require/peer-status.png)](https://david-dm.org/aaronallport/generator-angular-require#info=peerDependencies&view=table)
 
